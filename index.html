@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio Vesta – Deine Ferienwohnung. Ins beste Licht gerückt.</title>
+<meta name="description" content="Fotos, Video und Inseratstexte für Ferienwohnungen. Zum Festpreis, ohne Provision, mit Garantie.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#EFE6D8">
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Schriften lokal gehostet (keine Verbindung zu Google), Lizenz: SIL OFL 1.1, siehe /fonts */
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/dm-sans-400.woff2') format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/dm-sans-500.woff2') format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/dm-sans-700.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/cormorant-garamond-500.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/cormorant-garamond-600.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;src:url('/fonts/cormorant-garamond-500-italic.woff2') format('woff2')}
+@font-face{font-family:'Marcellus';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/marcellus-400.woff2') format('woff2')}
+:root{
+  --bg:#EFE6D8; --surface:#F7F2EA; --ink:#22201D; --muted:#5E574E; --line:#D8C9B1;
+  --accent:#B34D27; --accent-hover:#963F1F; --accent-ink:#FFFFFF;
+  --deep:#3D4A3E; --deep-ink:#EFE6D8; --flame:#E58A4E; --good:#3D6B45;
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mark:'Marcellus', Georgia, serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1A18; --surface:#26231F; --ink:#EFE6D8; --muted:#BDB2A2; --line:#3A352F;
+    --accent:#E58A4E; --accent-hover:#F09B62; --accent-ink:#22201D;
+    --deep:#2B352C; --deep-ink:#EFE6D8; --good:#8DBF94;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1A18; --surface:#26231F; --ink:#EFE6D8; --muted:#BDB2A2; --line:#3A352F;
+  --accent:#E58A4E; --accent-hover:#F09B62; --accent-ink:#22201D;
+  --deep:#2B352C; --deep-ink:#EFE6D8; --good:#8DBF94;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top, 0px) + 80px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:var(--accent)}
+a:hover{color:var(--accent-hover)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0}
+h2{font-size:clamp(2.1rem, 4.4vw, 3.1rem)}
+h3{font-size:1.6rem}
+p{margin:0}
+.lede{font-size:1.2rem;color:var(--muted);max-width:36em}
+section{padding:88px 0}
+@media (max-width:720px){section{padding:64px 0}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 1.0625rem/1 var(--sans);padding:18px 28px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;background:var(--accent);color:var(--accent-ink);transition:background .15s}
+.btn:hover{background:var(--accent-hover);color:var(--accent-ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-quiet{background:transparent;color:var(--ink);padding:18px 8px;text-decoration:underline;text-underline-offset:4px}
+.btn-quiet:hover{background:transparent;color:var(--accent)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand svg{width:40px;height:40px}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm small{font:500 .62rem/1 var(--sans);letter-spacing:.42em;margin-bottom:5px}
+.brand .wm span{font:1.45rem/1 var(--mark);letter-spacing:.16em}
+.top nav{display:flex;align-items:center;gap:28px;font-size:.95rem}
+.top nav a:not(.btn){color:var(--ink);text-decoration:none}
+.top nav a:not(.btn):hover{color:var(--accent)}
+.top .btn{padding:12px 20px;font-size:.95rem}
+@media (max-width:860px){.top nav a:not(.btn){display:none}}
+@media (max-width:720px){.top nav .btn{display:none}}
+
+/* hero */
+.hero{padding:56px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.8rem, 6.4vw, 5rem);letter-spacing:-.01em}
+.hero .lede{margin-top:24px}
+.hero .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:34px}
+.hero .fine{margin-top:14px;font-size:.92rem;color:var(--muted)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.hero{padding-top:36px}}
+
+.arch{position:relative;aspect-ratio:4/5;border-radius:9999px 9999px 14px 14px;overflow:hidden;background:var(--surface);box-shadow:0 0 0 10px var(--surface),0 0 0 11px var(--line);max-width:460px;margin:0 auto;width:100%;touch-action:pan-y}
+.arch .layer{position:absolute;inset:0}
+.arch .layer svg{width:100%;height:100%}
+.arch .after{clip-path:inset(0 0 0 var(--pos,50%))}
+.arch .divider{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:#F7F2EA;transform:translateX(-1px);pointer-events:none}
+.arch .knob{position:absolute;top:58%;left:var(--pos,50%);width:46px;height:46px;border-radius:999px;background:#F7F2EA;transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.arch .knob svg{width:22px;height:22px}
+.arch .tag{position:absolute;bottom:22px;font:700 .8rem/1 var(--sans);padding:8px 12px;border-radius:6px;pointer-events:none}
+.arch .tag.l{left:18px;background:#22201D;color:#EFE6D8}
+.arch .tag.r{right:18px;background:#B34D27;color:#FFFFFF}
+.arch input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.arch input[type=range]:focus-visible + .focusring{display:block}
+.arch .focusring{display:none;position:absolute;inset:4px;border-radius:9999px 9999px 12px 12px;outline:3px solid var(--accent);pointer-events:none}
+.slider-caption{text-align:center;font-size:.9rem;color:var(--muted);margin-top:22px}
+
+/* problem */
+.problem{border-top:1px solid var(--line)}
+.problem .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}
+.pains{list-style:none;margin:0;padding:0}
+.pains li{padding:22px 0;border-bottom:1px solid var(--line)}
+.pains li:first-child{padding-top:0}
+.pains strong{display:block;font:500 1.65rem/1.2 var(--serif)}
+.pains span{display:block;color:var(--muted);margin-top:6px}
+@media (max-width:860px){.problem .wrap{grid-template-columns:minmax(0,1fr);gap:28px}}
+
+/* quiz */
+.quiz{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quiz-head{max-width:640px}
+.quiz-head .lede{margin-top:16px}
+.q-list{margin-top:44px;display:grid;gap:0}
+.q{border:0;margin:0;padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;align-items:center}
+.q legend{float:left;font-weight:500;font-size:1.05rem;padding:0}
+.q legend b{display:inline-block;width:2em;color:var(--muted);font-weight:500}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opts span{display:inline-block;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:.95rem;cursor:pointer;transition:background .12s,border-color .12s}
+.opts input:checked + span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.opts input:focus-visible + span{outline:3px solid var(--accent);outline-offset:2px}
+@media (max-width:760px){.q{grid-template-columns:minmax(0,1fr);gap:12px}}
+.quiz-foot{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+.quiz-foot .count{color:var(--muted);font-size:.95rem}
+.result{display:none;margin-top:36px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:36px;gap:40px;grid-template-columns:auto minmax(0,1fr)}
+.result.show{display:grid}
+.gauge{width:170px;height:170px;position:relative}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge .num{position:absolute;inset:0;display:grid;place-items:center;font:500 3.2rem/1 var(--serif)}
+.gauge .num small{font:500 .9rem/1 var(--sans);color:var(--muted);display:block;text-align:center;margin-top:4px}
+.result h3{font-size:2rem}
+.result ul{margin:16px 0 0;padding-left:1.2em}
+.result li{margin:8px 0}
+.result .btn{margin-top:24px}
+@media (max-width:760px){.result{grid-template-columns:minmax(0,1fr);padding:26px}.gauge{width:140px;height:140px}}
+
+/* offer */
+.offer .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.offer .lede{margin-top:18px}
+.guarantee{margin-top:32px;display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:start;padding-top:28px;border-top:1px solid var(--line)}
+.guarantee svg{width:64px;height:64px}
+.guarantee h3{font-size:1.45rem}
+.guarantee p{color:var(--muted);margin-top:6px;font-size:.98rem}
+.receipt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:34px 34px 30px}
+.receipt h3{font-size:1.9rem}
+.receipt .sub{color:var(--muted);margin-top:6px}
+.lines{list-style:none;margin:26px 0 0;padding:0}
+.lines li{display:flex;align-items:baseline;gap:10px;padding:9px 0}
+.lines li .t{flex:0 1 auto}
+.lines li .dots{flex:1 1 auto;border-bottom:1px dotted var(--muted);transform:translateY(-5px);min-width:20px;opacity:.6}
+.lines li .v{flex:0 0 auto;font-variant-numeric:tabular-nums;color:var(--muted)}
+.lines .bonus-h{padding-top:18px;font:500 1.2rem/1.2 var(--serif);color:var(--accent)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+.total s{font-variant-numeric:tabular-nums}
+.price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:10px}
+.price .big{font:500 3.4rem/1 var(--serif);color:var(--ink)}
+.price .was{color:var(--muted);text-align:right;font-size:.95rem}
+.slots{margin-top:18px;font-size:.95rem}
+.slots .bar{height:8px;border-radius:99px;background:var(--line);margin-top:8px;overflow:hidden}
+.slots .bar i{display:block;height:100%;width:100%;background:var(--good)}
+.receipt .btn{width:100%;margin-top:24px}
+.receipt .fine{margin-top:12px;font-size:.88rem;color:var(--muted);text-align:center}
+@media (max-width:860px){.offer .wrap{grid-template-columns:minmax(0,1fr);gap:36px}.receipt{padding:26px 22px}}
+
+/* steps */
+.steps{border-top:1px solid var(--line)}
+.step-list{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;counter-reset:s}
+.step-list li{counter-increment:s;position:relative;padding-top:64px}
+.step-list li::before{content:counter(s);position:absolute;top:0;left:0;font:500 3rem/1 var(--serif);color:var(--accent)}
+.step-list h3{font-size:1.5rem}
+.step-list p{color:var(--muted);margin-top:8px}
+.step-list .when{display:inline-block;margin-top:14px;font-size:.88rem;font-weight:500;color:var(--ink);border:1px solid var(--line);padding:4px 10px;border-radius:99px}
+@media (max-width:760px){.step-list{grid-template-columns:minmax(0,1fr);gap:28px}}
+
+/* compare */
+.compare{background:var(--deep);color:var(--deep-ink)}
+.compare .lede{color:var(--deep-ink);opacity:.85;margin-top:14px}
+.bars{margin-top:40px;display:grid;gap:22px;max-width:760px}
+.bar-row .lab{display:flex;justify-content:space-between;gap:12px;font-size:.98rem;margin-bottom:8px}
+.bar-row .lab b{font-variant-numeric:tabular-nums}
+.bar-row .track{height:18px;border-radius:99px;background:rgba(239,230,216,.14);overflow:hidden}
+.bar-row .fill{height:100%;border-radius:99px}
+.compare .note{margin-top:26px;font-size:.9rem;opacity:.75;max-width:52em}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center}
+.team-img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:var(--surface)}
+.about p + p{margin-top:16px}
+.about .body{font-size:1.15rem;max-width:34em}
+@media (max-width:860px){.about .wrap{grid-template-columns:minmax(0,1fr)}.team-img{order:2}}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:500;font-size:1.08rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 1.6rem/1 var(--sans);color:var(--accent);transition:transform .15s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 20px;color:var(--muted);max-width:40em}
+@media (max-width:860px){.faq .wrap{grid-template-columns:minmax(0,1fr);gap:24px}}
+
+/* final */
+.final{text-align:center;border-top:1px solid var(--line)}
+.final h2{max-width:14em;margin:0 auto}
+.final .lede{margin:18px auto 0}
+.final .btn{margin-top:32px}
+footer{border-top:1px solid var(--line);padding:32px 0 40px;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer a{color:var(--muted)}
+
+/* sticky mobile cta */
+.mcta{display:none}
+@media (max-width:720px){
+  .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px))}
+  .mcta .btn{width:100%}
+  body{padding-bottom:84px}
+}
+
+/* funnel dialog */
+dialog{border:0;padding:0;border-radius:18px;background:var(--bg);color:var(--ink);width:min(560px, calc(100% - 24px));max-height:calc(100% - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px))}
+dialog::backdrop{background:rgba(20,18,16,.6)}
+.fn{padding:26px 28px 30px;display:flex;flex-direction:column;gap:20px}
+.fn-top{display:flex;align-items:center;gap:14px}
+.fn-prog{flex:1;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.fn-prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.fn-x{background:none;border:0;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer;padding:4px 8px}
+.fn h3{font-size:2rem}
+.fn .hint{color:var(--muted);margin-top:-8px;font-size:.98rem}
+.choices{display:grid;gap:10px}
+.choice{text-align:left;font:500 1.02rem/1.3 var(--sans);padding:16px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .12s}
+.choice:hover{border-color:var(--accent)}
+.field{display:grid;gap:6px}
+.field label{font-weight:500;font-size:.95rem}
+.field input{font:1rem var(--sans);padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.field input:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.field .err{color:var(--accent);font-size:.88rem;display:none}
+.field.invalid .err{display:block}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
+.fn-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.fn-back{background:none;border:0;color:var(--muted);font:500 .98rem var(--sans);cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
+.fn-done svg{width:72px;height:72px}
+.fn-error{color:var(--accent);font-size:.92rem}
+.pilot-note{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<form name="inserats-check" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="inserats-check">
+  <input name="bot-field"><input name="einheiten"><input name="lage"><input name="buchungslage"><input name="start">
+  <input name="inserat_link"><input name="vorname"><input name="email"><input name="telefon"><input name="score"><input name="einwilligung">
+</form>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Studio Vesta, zur Startseite">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <path d="M34 104 V54 A26 26 0 0 1 86 54 V104 M24 104 H96" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="60" cy="70" r="19" fill="#E58A4E" opacity=".3"/>
+        <circle cx="60" cy="70" r="10" style="fill:var(--accent)"/>
+      </svg>
+      <span class="wm"><small>STUDIO</small><span>VESTA</span></span>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#check">Inserats-Check</a>
+      <a href="#angebot">Angebot</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#faq">Fragen</a>
+      <a class="btn" href="#" data-open-funnel>Kostenlos prüfen lassen</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Deine Ferienwohnung. Ins beste Licht gerückt.</h1>
+      <p class="lede">Fotos, Video und Inseratstexte, die aus Klicks Buchungen machen. Zum Festpreis statt Provision – und mit Garantie, dass es sich lohnt.</p>
+      <div class="ctas">
+        <a class="btn" href="#check">Inserat in 60 Sekunden testen</a>
+        <a class="btn btn-quiet" href="#angebot">Was drin ist</a>
+      </div>
+      <p class="fine">Kostenlos, ohne Anmeldung. Du bekommst sofort deinen Score.</p>
+    </div>
+    <div>
+      <div class="arch" id="ba" style="--pos:50%">
+        <div class="layer before" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="500" fill="#8E8B84"/>
+            <rect y="360" width="400" height="140" fill="#6F6C66"/>
+            <rect x="220" y="90" width="120" height="160" fill="#A9B3B6"/>
+            <path d="M280 90 V250 M220 170 H340" stroke="#7A7872" stroke-width="5"/>
+            <rect x="218" y="88" width="124" height="164" fill="none" stroke="#7A7872" stroke-width="5"/>
+            <rect x="70" y="130" width="70" height="50" fill="#77746E" transform="rotate(-5 105 155)"/>
+            <rect x="40" y="268" width="210" height="62" rx="10" fill="#5E5C58"/>
+            <rect x="30" y="310" width="230" height="60" rx="10" fill="#565450"/>
+            <rect x="44" y="370" width="8" height="14" fill="#4A4845"/><rect x="238" y="370" width="8" height="14" fill="#4A4845"/>
+            <path d="M300 252 V372" stroke="#55534F" stroke-width="4"/>
+            <path d="M280 252 L320 252 L312 222 L288 222 Z" fill="#6A6863"/>
+            <rect x="318" y="384" width="46" height="34" fill="#5A5854"/>
+            <rect width="400" height="500" fill="#1E1E1E" opacity=".2"/>
+          </svg>
+        </div>
+        <div class="layer after" aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7A06A"/><stop offset="1" stop-color="#F4D2A2"/></linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="#EADBC4"/>
+            <rect y="360" width="400" height="140" fill="#B98D63"/>
+            <path d="M222 360 L338 360 L392 500 L180 500 Z" fill="#F4D2A2" opacity=".45"/>
+            <ellipse cx="150" cy="432" rx="150" ry="30" fill="#D8C9B1"/>
+            <rect x="220" y="90" width="120" height="160" fill="url(#sky)"/>
+            <circle cx="300" cy="200" r="16" fill="#F7E3C4"/>
+            <path d="M280 90 V250 M220 170 H340" stroke="#F7F2EA" stroke-width="5"/>
+            <rect x="218" y="88" width="124" height="164" fill="none" stroke="#F7F2EA" stroke-width="5"/>
+            <rect x="68" y="124" width="78" height="58" fill="#3D4A3E"/>
+            <rect x="76" y="132" width="62" height="42" fill="#D8C9B1"/>
+            <path d="M84 166 L100 146 L112 158 L120 150 L132 166 Z" fill="#B34D27" opacity=".8"/>
+            <circle cx="300" cy="240" r="74" fill="#E58A4E" opacity=".26"/>
+            <rect x="40" y="268" width="210" height="62" rx="10" fill="#3D4A3E"/>
+            <rect x="30" y="310" width="230" height="60" rx="10" fill="#34403A"/>
+            <rect x="58" y="278" width="52" height="40" rx="8" fill="#B34D27" transform="rotate(-7 84 298)"/>
+            <rect x="176" y="280" width="50" height="38" rx="8" fill="#D8C9B1" transform="rotate(5 201 299)"/>
+            <path d="M210 312 C230 300 262 306 262 330 L262 370 L226 370 C230 346 222 326 210 312 Z" fill="#EFE6D8"/>
+            <rect x="44" y="370" width="8" height="14" fill="#22201D"/><rect x="238" y="370" width="8" height="14" fill="#22201D"/>
+            <path d="M300 252 V372" stroke="#22201D" stroke-width="4"/>
+            <path d="M280 252 L320 252 L312 222 L288 222 Z" fill="#F7F2EA"/>
+            <rect x="344" y="340" width="32" height="34" rx="3" fill="#8C6B4F"/>
+            <ellipse cx="352" cy="318" rx="9" ry="22" fill="#5E7A5A" transform="rotate(-20 352 318)"/>
+            <ellipse cx="366" cy="312" rx="9" ry="26" fill="#6E8B69" transform="rotate(15 366 312)"/>
+            <ellipse cx="360" cy="326" rx="8" ry="18" fill="#4F6A4C"/>
+          </svg>
+        </div>
+        <div class="divider"></div>
+        <div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="#22201D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6 L3 12 L9 18 M15 6 L21 12 L15 18"/></svg></div>
+        <span class="tag l">Vorher</span>
+        <span class="tag r">Nachher</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Vorher und Nachher vergleichen">
+        <div class="focusring"></div>
+      </div>
+      <p class="slider-caption">Zieh am Fenster. Gleiche Wohnung, anderes Licht.</p>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div>
+      <h2>Deine Wohnung ist schön. Dein Inserat zeigt es nur nicht.</h2>
+    </div>
+    <ul class="pains">
+      <li><strong>Im Sommer voll, ab Oktober still.</strong><span>Die Nebensaison entscheidet über deine Rendite – und genau dann scrollen Gäste am kritischsten.</span></li>
+      <li><strong>Die Wohnung nebenan ist nicht schöner. Nur besser fotografiert.</strong><span>Gäste entscheiden in Sekunden, und zwar am Titelbild. Dunkle Handyfotos verlieren diesen Moment.</span></li>
+      <li><strong>Texte von damals, Preise nach Gefühl.</strong><span>Seit dem Start nichts angefasst? Dann arbeitet der Airbnb-Algorithmus gegen dich, nicht für dich.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="quiz" id="check">
+  <div class="wrap">
+    <div class="quiz-head">
+      <h2>Wie viel steckt noch in deinem Inserat?</h2>
+      <p class="lede">Sieben kurze Fragen, dann bekommst du deinen Inserats-Score und die drei größten Hebel. Kostenlos und ohne E-Mail.</p>
+    </div>
+    <form id="quiz" novalidate>
+      <div class="q-list" id="qlist"></div>
+      <div class="quiz-foot">
+        <button class="btn" type="submit" id="qsubmit" disabled>Score anzeigen</button>
+        <span class="count" id="qcount">0 von 7 beantwortet</span>
+      </div>
+    </form>
+    <div class="result" id="result" aria-live="polite">
+      <div class="gauge">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="52" fill="none" style="stroke:var(--line)" stroke-width="10"/>
+          <circle id="garc" cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="stroke:var(--accent);transition:stroke-dashoffset .8s ease-out"/>
+        </svg>
+        <div class="num"><div><span id="gnum">0</span><small>von 100</small></div></div>
+      </div>
+      <div>
+        <h3 id="rtitle"></h3>
+        <p id="rtext" style="margin-top:8px;color:var(--muted)"></p>
+        <ul id="rtips"></ul>
+        <button class="btn" type="button" data-open-funnel>Kostenlosen Profi-Check anfragen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="angebot">
+  <div class="wrap">
+    <div>
+      <h2>Der Vesta-Boost: mehr Buchungen in 60 Tagen.</h2>
+      <p class="lede">Ein halber Tag vor Ort, danach machen wir alles. Du schließt auf, wir kümmern uns um Styling, Licht, Kamera, Texte und das Einpflegen in dein Inserat.</p>
+      <div class="guarantee">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L54 12 V30 C54 44 44 55 32 60 C20 55 10 44 10 30 V12 Z" fill="none" style="stroke:var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M22 32 L29 39 L43 25" fill="none" style="stroke:var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <h3>Die Mehr-Anfragen-Garantie</h3>
+          <p>Bekommt dein Inserat in den 60 Tagen nach dem Go-live nicht mehr Anfragen als im gleichen Zeitraum davor, überarbeiten wir es kostenlos. Hilft auch das nicht, bekommst du dein Geld zurück.</p>
+        </div>
+      </div>
+    </div>
+    <div class="receipt">
+      <h3>Das bekommst du</h3>
+      <p class="sub">Alles für ein Inserat, einmal bezahlt.</p>
+      <ul class="lines">
+        <li><span class="t">Fotoshooting mit Styling und Lichtsetzung, 20–25 Bilder</span><span class="dots"></span><span class="v">690 €</span></li>
+        <li><span class="t">Kurzes Video für dein Inserat plus Instagram-Reel</span><span class="dots"></span><span class="v">490 €</span></li>
+        <li><span class="t">Neue Texte auf Deutsch und Englisch, nach Airbnb-Logik</span><span class="dots"></span><span class="v">290 €</span></li>
+        <li><span class="t">Bildreihenfolge und komplettes Plattform-Setup</span><span class="dots"></span><span class="v">190 €</span></li>
+        <li><span class="t">Vorher/Nachher-Report nach 60 Tagen</span><span class="dots"></span><span class="v">150 €</span></li>
+        <li class="bonus-h">Dazu in der Pilotphase</li>
+        <li><span class="t">Styling-Einkaufsliste für unter 150 €</span><span class="dots"></span><span class="v">90 €</span></li>
+        <li><span class="t">Saison-Update nach 6 Monaten: 3 neue Bilder</span><span class="dots"></span><span class="v">190 €</span></li>
+      </ul>
+      <div class="total"><span>Gesamtwert</span><s>2.090 €</s></div>
+      <div class="price">
+        <span class="big">990 €</span>
+        <span class="was">Pilotpreis inkl. MwSt.<br>danach 1.290 €</span>
+      </div>
+      <div class="slots">
+        <span>Noch 10 von 10 Pilotplätzen frei. Im Gegenzug dürfen wir dein Vorher/Nachher zeigen.</span>
+        <div class="bar" role="img" aria-label="10 von 10 Plätzen frei"><i></i></div>
+      </div>
+      <button class="btn" type="button" data-open-funnel>Pilotplatz anfragen</button>
+      <p class="fine">Shootings für die Wintersaison laufen bis Mitte November.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps" id="ablauf">
+  <div class="wrap">
+    <h2>So läuft es ab</h2>
+    <ol class="step-list">
+      <li><h3>Kostenloser Check</h3><p>Du schickst uns den Link zu deinem Inserat. Wir sagen dir ehrlich, was es bringt – und ob es sich für dich lohnt.</p><span class="when">Antwort in 48 Stunden</span></li>
+      <li><h3>Ein halber Tag vor Ort</h3><p>Vorher bekommst du eine kurze Styling-Liste. Am Tag selbst musst du nur aufschließen, auch wenn du weit weg wohnst.</p><span class="when">Termin nach Tageslicht</span></li>
+      <li><h3>Live und gemessen</h3><p>Wir pflegen Bilder, Video und Texte ein. Nach 60 Tagen zeigen wir dir schwarz auf weiß, was sich verändert hat.</p><span class="when">Live in 3–4 Wochen</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <h2>Einmal zahlen statt jedes Jahr abgeben.</h2>
+    <p class="lede">Verwaltungsagenturen nehmen 15–25 % von jeder Buchung, für immer. Wenn du den Betrieb selbst im Griff hast, brauchst du das nicht.</p>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="lab"><span>Vesta-Boost, einmalig</span><b>1.290 €</b></div>
+        <div class="track"><div class="fill" style="width:12%;background:#E58A4E"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="lab"><span>20 % Provision über 3 Jahre</span><b>10.800 €</b></div>
+        <div class="track"><div class="fill" style="width:100%;background:#D8C9B1"></div></div>
+      </div>
+    </div>
+    <p class="note">Beispielrechnung bei 18.000 € Jahresumsatz. Eine Vollverwaltung übernimmt zusätzlich Reinigung und Gästekommunikation – wir kümmern uns ausschließlich darum, dass gebucht wird.</p>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <img class="team-img" src="/team.webp" alt="Das Team hinter Studio Vesta" width="720" height="720" loading="lazy" decoding="async">
+    <div>
+      <h2>Wer dahintersteckt</h2>
+      <div class="body" style="margin-top:22px">
+        <p>Wir fotografieren seit Jahren Immobilien und drehen nebenher Werbefilme. Klingt nach viel, heißt im Grunde nur: Wir wissen, wo das Licht hingehört, und wie ein Raum aussieht, in den man sofort einziehen will.</p>
+        <p>Studio Vesta ist unser Versuch, genau das für Ferienwohnungen bezahlbar zu machen. Ohne Provision, ohne Vertrag über Jahre, mit einem Ergebnis, das du sehen kannst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Häufige Fragen</h2>
+    <div>
+      <details><summary>Airbnb vermittelt doch selbst Fotografen. Warum ihr?</summary><p>Die liefern Standardfotos. Wir liefern Styling, gesetztes Licht, Video und neue Texte – also das komplette Inserat, nicht nur die Bilder.</p></details>
+      <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja. Wir arbeiten bundesweit. Für den Shooting-Tag reicht eine Schlüsselübergabe, etwa über Nachbarn, Reinigung oder einen Schlüsselsafe.</p></details>
+      <details><summary>Muss ich neu einrichten oder Deko kaufen?</summary><p>Nein. Du bekommst vorab eine kurze Liste, was vor Ort sein sollte. Meist reichen ein paar Kissen, Handtücher und Pflanzen für unter 150 €.</p></details>
+      <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann greift die Garantie: Wir überarbeiten dein Inserat kostenlos. Und wenn auch das nicht hilft, bekommst du dein Geld zurück.</p></details>
+      <details><summary>Wem gehören die Fotos und Videos?</summary><p>Du darfst sie zeitlich unbegrenzt für die Vermarktung deiner Wohnung nutzen, auf allen Plattformen, deiner Website und in Social Media.</p></details>
+      <details><summary>Gibt es eine Vertragslaufzeit?</summary><p>Nein. Du zahlst einmal für ein fertiges Ergebnis. Laufende Betreuung gibt es nur, wenn du sie ausdrücklich willst.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Finde heraus, was in deinem Inserat steckt.</h2>
+    <p class="lede">Schick uns den Link. Du bekommst eine ehrliche Einschätzung, auch wenn die Antwort lautet: Passt schon.</p>
+    <button class="btn" type="button" data-open-funnel>Kostenlosen Check anfragen</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Studio Vesta</span>
+    <span><a href="#">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="#">Datenschutz</a></span>
+  </div>
+</footer>
+
+<div class="mcta"><button class="btn" type="button" data-open-funnel>Kostenlos prüfen lassen</button></div>
+
+<dialog id="funnel" aria-label="Kostenlosen Inserats-Check anfragen">
+  <div class="fn">
+    <div class="fn-top">
+      <div class="fn-prog" aria-hidden="true"><i id="fprog"></i></div>
+      <button class="fn-x" type="button" id="fclose" aria-label="Schließen">×</button>
+    </div>
+    <div id="fbody"></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  // ---------- Einstellungen ----------
+  var CALENDAR_URL = ''; // z. B. 'https://cal.com/studio-vesta/inserats-check' – leer = Termin-Button wird ausgeblendet
+  // ---------- before / after ----------
+  var ba = document.getElementById('ba');
+  var range = ba.querySelector('input[type=range]');
+  function setPos(v){ ba.style.setProperty('--pos', v + '%'); }
+  range.addEventListener('input', function(){ setPos(range.value); });
+  setPos(range.value);
+
+  // ---------- quiz ----------
+  var Q = [
+    {q:'Wer hat deine aktuellen Fotos gemacht?', o:['Ich selbst, mit dem Handy','Bekannte oder der Makler','Ein Profi'], tip:'Professionelle Fotos sind der größte Einzelhebel. Das Titelbild entscheidet, ob überhaupt geklickt wird.'},
+    {q:'Wie alt sind die Fotos?', o:['Älter als 3 Jahre','1–3 Jahre','Jünger als 1 Jahr'], tip:'Alte Fotos zeigen oft nicht mehr, was heute vor Ort ist – und wirken im Vergleich zu neuen Inseraten müde.'},
+    {q:'Gibt es ein Video im Inserat?', o:['Nein','Ein Handyvideo','Ein professionelles Video'], tip:'Ein kurzes Video hebt dich von fast allen Inseraten in deiner Gegend ab und funktioniert zusätzlich auf Instagram.'},
+    {q:'Wann hast du Titel und Beschreibung zuletzt überarbeitet?', o:['Seit dem Start nicht','Vor über einem Jahr','In den letzten Monaten'], tip:'Titel und Beschreibung nach Suchlogik der Plattform bringen dich in mehr Suchergebnisse.'},
+    {q:'Wie legst du deine Preise fest?', o:['Feste Preise','Per Hand nach Saison','Mit einem Pricing-Tool'], tip:'Dynamische Preise holen in der Hauptsaison mehr raus und füllen Lücken in der Nebensaison.'},
+    {q:'Wie ist die Belegung in der Nebensaison?', o:['Unter 30 %','30–60 %','Über 60 %'], tip:'Schwache Nebensaison ist fast immer ein Sichtbarkeitsproblem – genau da wirken bessere Bilder am stärksten.'},
+    {q:'Auf wie vielen Plattformen bist du?', o:['Nur einer','Zwei','Drei oder mehr'], tip:'Eine zweite Plattform wie Booking.com erreicht Gäste, die Airbnb gar nicht nutzen.'}
+  ];
+  var list = document.getElementById('qlist');
+  Q.forEach(function(item, i){
+    var fs = document.createElement('fieldset'); fs.className = 'q';
+    var lg = document.createElement('legend');
+    var b = document.createElement('b'); b.textContent = (i+1) + '.';
+    lg.appendChild(b); lg.appendChild(document.createTextNode(item.q));
+    var opts = document.createElement('div'); opts.className = 'opts';
+    item.o.forEach(function(label, v){
+      var l = document.createElement('label');
+      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'q' + i; inp.value = v;
+      var sp = document.createElement('span'); sp.textContent = label;
+      l.appendChild(inp); l.appendChild(sp); opts.appendChild(l);
+    });
+    fs.appendChild(lg); fs.appendChild(opts); list.appendChild(fs);
+  });
+  var form = document.getElementById('quiz');
+  var submit = document.getElementById('qsubmit');
+  var count = document.getElementById('qcount');
+  function answers(){
+    return Q.map(function(_, i){ var c = form.querySelector('input[name=q' + i + ']:checked'); return c ? +c.value : null; });
+  }
+  form.addEventListener('change', function(){
+    var a = answers(); var n = a.filter(function(x){ return x !== null; }).length;
+    count.textContent = n + ' von ' + Q.length + ' beantwortet';
+    submit.disabled = n < Q.length;
+  });
+  var lastScore = null;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var a = answers(); if (a.indexOf(null) > -1) return;
+    var sum = a.reduce(function(s, x){ return s + x; }, 0);
+    var score = Math.round(sum / (Q.length * 2) * 100);
+    lastScore = score;
+    var title, text;
+    if (score < 40){ title = 'Hier steckt richtig viel drin.'; text = 'Dein Inserat verschenkt gerade Buchungen. Die gute Nachricht: Die Hebel sind klar und schnell umgesetzt.'; }
+    else if (score < 70){ title = 'Solide Basis, klare Hebel.'; text = 'Du machst schon einiges richtig. Mit ein paar gezielten Änderungen holst du deutlich mehr raus.'; }
+    else { title = 'Schon gut aufgestellt.'; text = 'Dein Inserat ist besser als die meisten. Ob sich ein Boost trotzdem lohnt, sagen wir dir ehrlich im kostenlosen Check.'; }
+    document.getElementById('rtitle').textContent = title;
+    document.getElementById('rtext').textContent = text;
+    var tips = document.getElementById('rtips'); tips.textContent = '';
+    a.map(function(v, i){ return {v:v, i:i}; }).sort(function(x, y){ return x.v - y.v || x.i - y.i; })
+     .filter(function(x){ return x.v < 2; }).slice(0, 3)
+     .forEach(function(x){ var li = document.createElement('li'); li.textContent = Q[x.i].tip; tips.appendChild(li); });
+    if (!tips.children.length){ var li = document.createElement('li'); li.textContent = 'Keine offensichtliche Schwachstelle – der Feinschliff liegt im Detail.'; tips.appendChild(li); }
+    var res = document.getElementById('result'); res.classList.add('show');
+    var arc = document.getElementById('garc'); var num = document.getElementById('gnum');
+    requestAnimationFrame(function(){ arc.style.strokeDashoffset = (326.7 * (1 - score / 100)).toFixed(1); });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce){ num.textContent = score; }
+    else { var t0 = null; (function tick(t){ if(!t0) t0 = t; var p = Math.min(1, (t - t0) / 800); num.textContent = Math.round(score * p); if (p < 1) requestAnimationFrame(tick); })(performance.now()); }
+    res.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'nearest'});
+  });
+
+  // ---------- application funnel ----------
+  var dlg = document.getElementById('funnel');
+  var body = document.getElementById('fbody');
+  var prog = document.getElementById('fprog');
+  var data = {};
+  var steps = [
+    {k:'einheiten', t:'Wie viele Ferienwohnungen vermietest du?', o:['Eine','Zwei','Drei oder mehr']},
+    {k:'lage', t:'Wo liegt deine Wohnung?', o:['An der Küste','In den Bergen','Auf dem Land oder im Mittelgebirge','In einer Stadt']},
+    {k:'lage_buchungen', t:'Wie läuft es gerade mit den Buchungen?', o:['Gut, aber die Nebensaison ist schwach','Insgesamt zu wenig','Noch gar nicht, die Wohnung ist neu']},
+    {k:'start', t:'Wann möchtest du loslegen?', o:['So schnell wie möglich','In den nächsten 1–3 Monaten','Ich informiere mich erst mal']},
+    {k:'link', t:'Wo finden wir dein Inserat?', hint:'Ein Link zu Airbnb oder Booking.com reicht. Noch nicht online? Dann einfach weiter.', input:true},
+    {k:'kontakt', t:'Wohin dürfen wir deinen Check schicken?', contact:true}
+  ];
+  var idx = 0;
+  function el(tag, attrs, text){ var e = document.createElement(tag); if (attrs) Object.keys(attrs).forEach(function(k){ e.setAttribute(k, attrs[k]); }); if (text != null) e.textContent = text; return e; }
+  function nav(canNext, nextLabel, onNext){
+    var n = el('div', {class:'fn-nav'});
+    if (idx > 0){ var b = el('button', {class:'fn-back', type:'button'}, 'Zurück'); b.addEventListener('click', function(){ idx--; render(); }); n.appendChild(b); } else { n.appendChild(el('span')); }
+    if (canNext){ var f = el('button', {class:'btn', type:'button'}, nextLabel); f.addEventListener('click', onNext); n.appendChild(f); }
+    return n;
+  }
+  function render(){
+    body.textContent = '';
+    prog.style.width = Math.round(idx / steps.length * 100) + '%';
+    if (idx >= steps.length) return done();
+    var s = steps[idx];
+    var wrap = el('div', {class:'fn'}); wrap.style.padding = '0';
+    var h = el('h3', null, s.t); h.id = 'fstep-title'; h.tabIndex = -1; wrap.appendChild(h);
+    if (s.hint) wrap.appendChild(el('p', {class:'hint'}, s.hint));
+    if (s.o){
+      var c = el('div', {class:'choices'});
+      s.o.forEach(function(opt){ var b = el('button', {class:'choice', type:'button'}, opt); b.addEventListener('click', function(){ data[s.k] = opt; idx++; render(); }); c.appendChild(b); });
+      wrap.appendChild(c); wrap.appendChild(nav(false));
+    } else if (s.input){
+      var f = el('div', {class:'field'});
+      var lab = el('label', {for:'f-link'}, 'Link zum Inserat (optional)');
+      var inp = el('input', {id:'f-link', type:'url', inputmode:'url', placeholder:'https://www.airbnb.de/rooms/…', autocomplete:'url'});
+      inp.value = data.link || '';
+      f.appendChild(lab); f.appendChild(inp); wrap.appendChild(f);
+      wrap.appendChild(nav(true, 'Weiter', function(){ data.link = inp.value.trim(); idx++; render(); }));
+    } else if (s.contact){
+      function field(id, label, type, ac, req){
+        var f = el('div', {class:'field'});
+        f.appendChild(el('label', {for:id}, label + (req ? '' : ' (optional)')));
+        var i = el('input', {id:id, type:type, autocomplete:ac}); i.value = data[id] || '';
+        f.appendChild(i);
+        if (req) f.appendChild(el('span', {class:'err'}, type === 'email' ? 'Bitte gib eine gültige E-Mail-Adresse ein.' : 'Bitte gib deinen Vornamen ein.'));
+        wrap.appendChild(f); return {f:f, i:i};
+      }
+      var nm = field('name', 'Vorname', 'text', 'given-name', true);
+      var em = field('email', 'E-Mail', 'email', 'email', true);
+      var ph = field('phone', 'Telefon, falls ein kurzer Anruf einfacher ist', 'tel', 'tel', false);
+      var cons = el('label', {class:'consent'});
+      var cb = el('input', {type:'checkbox', id:'f-consent'});
+      cons.appendChild(cb); cons.appendChild(document.createTextNode('Ich bin einverstanden, dass Studio Vesta mich zu meiner Anfrage kontaktiert. Details in der Datenschutzerklärung.'));
+      wrap.appendChild(cons);
+      var consErr = el('span', {class:'err'}, 'Bitte bestätige, dass wir dich kontaktieren dürfen.'); consErr.style.color = 'var(--accent)'; consErr.style.fontSize = '.88rem'; consErr.hidden = true; wrap.appendChild(consErr);
+      wrap.appendChild(nav(true, 'Check anfragen', function(){
+        var ok = true;
+        nm.f.classList.toggle('invalid', !nm.i.value.trim()); if (!nm.i.value.trim()) ok = false;
+        var mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.i.value.trim());
+        em.f.classList.toggle('invalid', !mailOk); if (!mailOk) ok = false;
+        consErr.hidden = cb.checked; if (!cb.checked) ok = false;
+        if (!ok) return;
+        data.name = nm.i.value.trim(); data.email = em.i.value.trim(); data.phone = ph.i.value.trim();
+        var btn = this; btn.disabled = true; btn.textContent = 'Wird gesendet …';
+        sendErr.hidden = true;
+        send().then(function(){ idx++; render(); }).catch(function(){
+          btn.disabled = false; btn.textContent = 'Erneut senden';
+          sendErr.hidden = false;
+        });
+      }));
+      var sendErr = el('p', {class:'fn-error', role:'alert'}, 'Das hat leider nicht geklappt. Bitte versuch es noch einmal oder schreib uns direkt.');
+      sendErr.hidden = true; wrap.appendChild(sendErr);
+    }
+    body.appendChild(wrap);
+    h.focus();
+  }
+  function send(){
+    var body = new URLSearchParams({
+      'form-name': 'inserats-check', 'bot-field': '',
+      einheiten: data.einheiten || '', lage: data.lage || '', buchungslage: data.lage_buchungen || '',
+      start: data.start || '', inserat_link: data.link || '', vorname: data.name || '',
+      email: data.email || '', telefon: data.phone || '',
+      score: data.score != null ? String(data.score) : '', einwilligung: 'ja'
+    });
+    return fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body.toString()})
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); });
+  }
+  function done(){
+    prog.style.width = '100%';
+    var w = el('div', {class:'fn fn-done'}); w.style.padding = '0';
+    w.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M34 104 V54 A26 26 0 0 1 86 54 V104 M24 104 H96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="70" r="19" fill="#E58A4E" opacity=".3"/><circle cx="60" cy="70" r="10" style="fill:var(--accent)"/></svg>');
+    var h = el('h3', null, 'Danke, ' + (data.name || '') + '!'); h.tabIndex = -1; w.appendChild(h);
+    w.appendChild(el('p', {class:'hint'}, 'Wir schauen uns dein Inserat an und melden uns innerhalb von 48 Stunden mit deinem persönlichen Check.'));
+    if (CALENDAR_URL){
+      var a = el('a', {class:'btn', href:CALENDAR_URL, target:'_blank', rel:'noopener'}, 'Direkt einen 20-Minuten-Termin buchen'); w.appendChild(a);
+    }
+    body.appendChild(w); h.focus();
+  }
+  document.querySelectorAll('[data-open-funnel]').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.preventDefault(); idx = 0; data = {}; if (lastScore !== null) data.score = lastScore;
+      render(); if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+  });
+  document.getElementById('fclose').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+})();
+</script>
+</body>
+</html>
