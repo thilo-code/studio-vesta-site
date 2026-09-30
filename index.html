@@ -513,7 +513,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <footer>
   <div class="wrap">
     <span>© 2026 Studio Vesta</span>
-    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="#">Datenschutz</a></span>
+    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="https://www.iubenda.com/privacy-policy/67312620" target="_blank" rel="noopener">Datenschutz</a></span>
   </div>
 </footer>
 
@@ -532,7 +532,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <script>
 (function(){
   // ---------- Einstellungen ----------
-  var CALENDAR_URL = ''; // z. B. 'https://cal.com/studio-vesta/inserats-check' – leer = Termin-Button wird ausgeblendet
+  var CALENDAR_URL = 'https://cal.com/thilo-erward/30min'; // z. B. 'https://cal.com/studio-vesta/inserats-check' – leer = Termin-Button wird ausgeblendet
   // ---------- before / after ----------
   var ba = document.getElementById('ba');
   var range = ba.querySelector('input[type=range]');
@@ -699,7 +699,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
     var h = el('h3', null, 'Danke, ' + (data.name || '') + '!'); h.tabIndex = -1; w.appendChild(h);
     w.appendChild(el('p', {class:'hint'}, 'Wir schauen uns dein Inserat an und melden uns innerhalb von 48 Stunden mit deinem persönlichen Check.'));
     if (CALENDAR_URL){
-      var a = el('a', {class:'btn', href:CALENDAR_URL, target:'_blank', rel:'noopener'}, 'Direkt einen 20-Minuten-Termin buchen'); w.appendChild(a);
+      var a = el('a', {class:'btn', href:CALENDAR_URL, target:'_blank', rel:'noopener'}, 'Direkt einen Termin buchen'); w.appendChild(a);
     }
     body.appendChild(w); h.focus();
   }
