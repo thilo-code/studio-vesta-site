@@ -250,7 +250,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 .field .err{color:var(--accent);font-size:.88rem;display:none}
 .field.invalid .err{display:block}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted)}
-.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
+.consent input{margin-top:4px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--accent)}
+.consent a{color:var(--accent)}
 .fn-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .fn-back{background:none;border:0;color:var(--muted);font:500 .98rem var(--sans);cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
 .fn-done svg{width:72px;height:72px}
@@ -413,7 +414,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L54 12 V30 C54 44 44 55 32 60 C20 55 10 44 10 30 V12 Z" fill="none" style="stroke:var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M22 32 L29 39 L43 25" fill="none" style="stroke:var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
           <h3>Die Mehr-Anfragen-Garantie</h3>
-          <p>Bekommt dein Inserat in den 60 Tagen nach dem Go-live nicht mehr Anfragen als im gleichen Zeitraum davor, überarbeiten wir es kostenlos. Hilft auch das nicht, bekommst du dein Geld zurück.</p>
+          <p>Bekommt dein Inserat in den 60 Tagen nach dem Go-live nicht mehr Anfragen als im gleichen Zeitraum davor, überarbeiten wir es kostenlos. Hilft auch das nicht, bekommst du dein Geld zurück. Es gelten die <a href="/garantie.html">Garantiebedingungen</a>, deine gesetzlichen Rechte bleiben unberührt.</p>
         </div>
       </div>
     </div>
@@ -430,7 +431,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <li><span class="t">Styling-Einkaufsliste für unter 150 €</span><span class="dots"></span><span class="v">90 €</span></li>
         <li><span class="t">Saison-Update nach 6 Monaten: 3 neue Bilder</span><span class="dots"></span><span class="v">190 €</span></li>
       </ul>
-      <div class="total"><span>Gesamtwert</span><s>2.090 €</s></div>
+      <div class="total"><span>Einzelwert der Leistungen</span><span>2.090 €</span></div>
       <div class="price">
         <span class="big">990 €</span>
         <span class="was">Pilotpreis inkl. MwSt.<br>danach 1.290 €</span>
@@ -494,7 +495,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       <details><summary>Airbnb vermittelt doch selbst Fotografen. Warum ihr?</summary><p>Die liefern Standardfotos. Wir liefern Styling, gesetztes Licht, Video und neue Texte – also das komplette Inserat, nicht nur die Bilder.</p></details>
       <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja. Wir arbeiten bundesweit. Für den Shooting-Tag reicht eine Schlüsselübergabe, etwa über Nachbarn, Reinigung oder einen Schlüsselsafe.</p></details>
       <details><summary>Muss ich neu einrichten oder Deko kaufen?</summary><p>Nein. Du bekommst vorab eine kurze Liste, was vor Ort sein sollte. Meist reichen ein paar Kissen, Handtücher und Pflanzen für unter 150 €.</p></details>
-      <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann greift die Garantie: Wir überarbeiten dein Inserat kostenlos. Und wenn auch das nicht hilft, bekommst du dein Geld zurück.</p></details>
+      <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann greift die Garantie: Wir überarbeiten dein Inserat kostenlos. Und wenn auch das nicht hilft, bekommst du dein Geld zurück. Details stehen in den <a href="/garantie.html">Garantiebedingungen</a>.</p></details>
       <details><summary>Wem gehören die Fotos und Videos?</summary><p>Du darfst sie zeitlich unbegrenzt für die Vermarktung deiner Wohnung nutzen, auf allen Plattformen, deiner Website und in Social Media.</p></details>
       <details><summary>Gibt es eine Vertragslaufzeit?</summary><p>Nein. Du zahlst einmal für ein fertiges Ergebnis. Laufende Betreuung gibt es nur, wenn du sie ausdrücklich willst.</p></details>
     </div>
@@ -514,7 +515,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <footer>
   <div class="wrap">
     <span>© 2026 Stammbleibe</span>
-    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="https://www.iubenda.com/privacy-policy/67312620" target="_blank" rel="noopener">Datenschutz</a></span>
+    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="https://www.iubenda.com/privacy-policy/67312620" target="_blank" rel="noopener">Datenschutz</a>&nbsp;&nbsp;&nbsp;<a href="/agb.html">AGB</a>&nbsp;&nbsp;&nbsp;<a href="/widerruf.html">Widerruf</a>&nbsp;&nbsp;&nbsp;<a href="/garantie.html">Garantie</a></span>
   </div>
 </footer>
 
@@ -658,7 +659,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       var ph = field('phone', 'Telefon, falls ein kurzer Anruf einfacher ist', 'tel', 'tel', false);
       var cons = el('label', {class:'consent'});
       var cb = el('input', {type:'checkbox', id:'f-consent'});
-      cons.appendChild(cb); cons.appendChild(document.createTextNode('Ich bin einverstanden, dass Stammbleibe mich zu meiner Anfrage kontaktiert. Details in der Datenschutzerklärung.'));
+      var consTxt = el('span'); consTxt.appendChild(document.createTextNode('Ich bin einverstanden, dass Stammbleibe mich zu meiner Anfrage kontaktiert. Details in der ')); consTxt.appendChild(el('a', {href:'https://www.iubenda.com/privacy-policy/67312620', target:'_blank', rel:'noopener'}, 'Datenschutzerklärung')); consTxt.appendChild(document.createTextNode('.'));
+      cons.appendChild(cb); cons.appendChild(consTxt);
       wrap.appendChild(cons);
       var consErr = el('span', {class:'err'}, 'Bitte bestätige, dass wir dich kontaktieren dürfen.'); consErr.style.color = 'var(--accent)'; consErr.style.fontSize = '.88rem'; consErr.hidden = true; wrap.appendChild(consErr);
       wrap.appendChild(nav(true, 'Check anfragen', function(){
