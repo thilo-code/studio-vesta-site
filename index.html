@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Stammbleibe – Fotos &amp; Inserate für Ferienwohnungen</title>
-<meta name="description" content="Fotos, Video und Inseratstexte für Ferienwohnungen. Zum Festpreis, ohne Provision, mit Garantie.">
+<title>Stammbleibe | Fotos, Video und Texte für Ferienwohnungen</title>
+<meta name="description" content="Wir fotografieren und filmen deine Ferienwohnung und schreiben das Inserat neu. Du zahlst einmal einen Festpreis und gibst keine Provision ab.">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -243,6 +243,13 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 .choices{display:grid;gap:10px}
 .choice{text-align:left;font:500 1.02rem/1.3 var(--sans);padding:16px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .12s}
 .choice:hover{border-color:var(--accent)}
+.choices.multi{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.choice[aria-pressed]{display:flex;gap:10px;align-items:flex-start}
+.choice[aria-pressed]::before{content:'';flex:0 0 18px;height:18px;margin-top:1px;border-radius:5px;border:1.5px solid var(--line);background:var(--bg) no-repeat center/12px}
+.choice[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.choice[aria-pressed="true"]::before{border-color:var(--accent);background-color:var(--accent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.fn-nav .btn:disabled{opacity:.45;cursor:not-allowed}
+.field input:disabled{cursor:not-allowed}
 .field{display:grid;gap:6px}
 .field label{font-weight:500;font-size:.95rem}
 .field input{font:1rem var(--sans);padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
@@ -262,8 +269,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <body>
 <form name="inserats-check" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="inserats-check">
-  <input name="bot-field"><input name="einheiten"><input name="lage"><input name="buchungslage"><input name="start">
-  <input name="inserat_link"><input name="vorname"><input name="email"><input name="telefon"><input name="score"><input name="einwilligung">
+  <input name="bot-field"><input name="einheiten"><input name="ziele"><input name="zielgruppe"><input name="start">
+  <input name="ort"><input name="inserat_link"><input name="vorname"><input name="email"><input name="telefon"><input name="score"><input name="einwilligung">
 </form>
 
 <header class="top">
@@ -291,13 +298,13 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <section class="hero">
   <div class="wrap">
     <div>
-      <h1>Deine Ferienwohnung. Ins beste Licht gerückt.</h1>
-      <p class="lede">Fotos, Video und Inseratstexte, die aus Klicks Buchungen machen. Zum Festpreis statt Provision – und mit Garantie, dass es sich lohnt.</p>
+      <h1>Gebucht wird, was gut aussieht.</h1>
+      <p class="lede">Neue Fotos, ein kurzes Video und ein überarbeitetes Inserat zum Festpreis. Provision zahlst du keine, und wenn danach nicht mehr Anfragen kommen, greift unsere Garantie.</p>
       <div class="ctas">
         <a class="btn" href="#check">Inserat in 60 Sekunden testen</a>
-        <a class="btn btn-quiet" href="#angebot">Was drin ist</a>
+        <a class="btn btn-quiet" href="#angebot">Zum Angebot</a>
       </div>
-      <p class="fine">Kostenlos, ohne Anmeldung. Du bekommst sofort deinen Score.</p>
+      <p class="fine">Sieben Fragen, keine E-Mail nötig. Dein Ergebnis siehst du sofort.</p>
     </div>
     <div>
       <div class="arch" id="ba" style="--pos:50%">
@@ -356,7 +363,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <input type="range" min="0" max="100" value="50" aria-label="Vorher und Nachher vergleichen">
         <div class="focusring"></div>
       </div>
-      <p class="slider-caption">Zieh am Fenster. Gleiche Wohnung, anderes Licht.</p>
+      <p class="slider-caption">Zweimal dieselbe Wohnung. Welche würdest du buchen?</p>
     </div>
   </div>
 </section>
@@ -364,12 +371,12 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <section class="problem">
   <div class="wrap">
     <div>
-      <h2>Deine Wohnung ist schön. Dein Inserat zeigt es nur nicht.</h2>
+      <h2>Online sieht deine Wohnung oft schlechter aus, als sie ist.</h2>
     </div>
     <ul class="pains">
-      <li><strong>Im Sommer voll, ab Oktober still.</strong><span>Die Nebensaison entscheidet über deine Rendite – und genau dann scrollen Gäste am kritischsten.</span></li>
-      <li><strong>Die Wohnung nebenan ist nicht schöner. Nur besser fotografiert.</strong><span>Gäste entscheiden in Sekunden, und zwar am Titelbild. Dunkle Handyfotos verlieren diesen Moment.</span></li>
-      <li><strong>Texte von damals, Preise nach Gefühl.</strong><span>Seit dem Start nichts angefasst? Dann arbeitet der Airbnb-Algorithmus gegen dich, nicht für dich.</span></li>
+      <li><strong>Im Sommer voll, ab Oktober still.</strong><span>Ab Herbst gibt es weniger Gäste und mehr freie Wohnungen. Wer dann noch gebucht wird, hat meistens die besseren Bilder.</span></li>
+      <li><strong>Die Wohnung nebenan hat einfach die besseren Fotos.</strong><span>In der Suchliste sieht man erst mal nur das Titelbild. Ist es dunkel oder schief, scrollen die Leute weiter.</span></li>
+      <li><strong>Texte von damals, Preise nach Gefühl.</strong><span>Wenn Titel und Beschreibung seit dem ersten Tag gleich sind, fehlen oft genau die Wörter, nach denen Gäste suchen.</span></li>
     </ul>
   </div>
 </section>
@@ -378,7 +385,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
   <div class="wrap">
     <div class="quiz-head">
       <h2>Wie viel steckt noch in deinem Inserat?</h2>
-      <p class="lede">Sieben kurze Fragen, dann bekommst du deinen Inserats-Score und die drei größten Hebel. Kostenlos und ohne E-Mail.</p>
+      <p class="lede">Beantworte sieben Fragen und du siehst, wo dein Inserat steht und womit du am meisten erreichen würdest. Eine E-Mail-Adresse brauchst du dafür nicht.</p>
     </div>
     <form id="quiz" novalidate>
       <div class="q-list" id="qlist"></div>
@@ -399,7 +406,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <h3 id="rtitle"></h3>
         <p id="rtext" style="margin-top:8px;color:var(--muted)"></p>
         <ul id="rtips"></ul>
-        <button class="btn" type="button" data-open-funnel>Kostenlosen Profi-Check anfragen</button>
+        <button class="btn" type="button" data-open-funnel>Inserat kostenlos prüfen lassen</button>
       </div>
     </div>
   </div>
@@ -408,8 +415,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <section class="offer" id="angebot">
   <div class="wrap">
     <div>
-      <h2>Der Stammbleibe-Boost: mehr Buchungen in 60 Tagen.</h2>
-      <p class="lede">Ein halber Tag vor Ort, danach machen wir alles. Du schließt auf, wir kümmern uns um Styling, Licht, Kamera, Texte und das Einpflegen in dein Inserat.</p>
+      <h2>Der Stammbleibe-Boost</h2>
+      <p class="lede">Wir sind einen halben Tag in deiner Wohnung, danach musst du nichts mehr tun. Wir stylen, fotografieren und filmen, schreiben die Texte neu und stellen am Ende alles in dein Inserat.</p>
       <div class="guarantee">
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L54 12 V30 C54 44 44 55 32 60 C20 55 10 44 10 30 V12 Z" fill="none" style="stroke:var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M22 32 L29 39 L43 25" fill="none" style="stroke:var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
@@ -424,8 +431,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       <ul class="lines">
         <li><span class="t">Fotoshooting mit Styling und Lichtsetzung, 20–25 Bilder</span><span class="dots"></span><span class="v">690 €</span></li>
         <li><span class="t">Kurzes Video für dein Inserat plus Instagram-Reel</span><span class="dots"></span><span class="v">490 €</span></li>
-        <li><span class="t">Neue Texte auf Deutsch und Englisch, nach Airbnb-Logik</span><span class="dots"></span><span class="v">290 €</span></li>
-        <li><span class="t">Bildreihenfolge und komplettes Plattform-Setup</span><span class="dots"></span><span class="v">190 €</span></li>
+        <li><span class="t">Neue Texte auf Deutsch und Englisch</span><span class="dots"></span><span class="v">290 €</span></li>
+        <li><span class="t">Bilder sortiert und alles im Inserat eingestellt</span><span class="dots"></span><span class="v">190 €</span></li>
         <li><span class="t">Vorher/Nachher-Report nach 60 Tagen</span><span class="dots"></span><span class="v">150 €</span></li>
         <li class="bonus-h">Dazu in der Pilotphase</li>
         <li><span class="t">Styling-Einkaufsliste für unter 150 €</span><span class="dots"></span><span class="v">90 €</span></li>
@@ -450,17 +457,17 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
   <div class="wrap">
     <h2>So läuft es ab</h2>
     <ol class="step-list">
-      <li><h3>Kostenloser Check</h3><p>Du schickst uns den Link zu deinem Inserat. Wir sagen dir ehrlich, was es bringt – und ob es sich für dich lohnt.</p><span class="when">Antwort in 48 Stunden</span></li>
-      <li><h3>Ein halber Tag vor Ort</h3><p>Vorher bekommst du eine kurze Styling-Liste. Am Tag selbst musst du nur aufschließen, auch wenn du weit weg wohnst.</p><span class="when">Termin nach Tageslicht</span></li>
-      <li><h3>Live und gemessen</h3><p>Wir pflegen Bilder, Video und Texte ein. Nach 60 Tagen zeigen wir dir schwarz auf weiß, was sich verändert hat.</p><span class="when">Live in 3–4 Wochen</span></li>
+      <li><h3>Kostenloser Check</h3><p>Du schickst uns den Link zu deinem Inserat. Wir schauen es uns an und sagen dir, was wir ändern würden und ob sich das für dich rechnet.</p><span class="when">Antwort in 48 Stunden</span></li>
+      <li><h3>Ein halber Tag vor Ort</h3><p>Ein paar Tage vorher schicken wir dir eine kurze Liste, was noch in die Wohnung sollte. Am Shooting-Tag muss nur jemand aufschließen, ein Schlüsselsafe tut es auch.</p><span class="when">Termin nach Wetter und Tageslicht</span></li>
+      <li><h3>Live und gemessen</h3><p>Wir stellen Bilder, Video und Texte online. Nach 60 Tagen vergleichen wir Aufrufe und Anfragen mit der Zeit davor und schicken dir die Zahlen.</p><span class="when">Live in 3–4 Wochen</span></li>
     </ol>
   </div>
 </section>
 
 <section class="compare">
   <div class="wrap">
-    <h2>Einmal zahlen statt jedes Jahr abgeben.</h2>
-    <p class="lede">Verwaltungsagenturen nehmen 15–25 % von jeder Buchung, für immer. Wenn du den Betrieb selbst im Griff hast, brauchst du das nicht.</p>
+    <h2>Einmal zahlen, danach gehört jede Buchung dir.</h2>
+    <p class="lede">Eine Verwaltungsagentur behält meist 15 bis 25 % jeder Buchung, solange der Vertrag läuft. Wenn du Gäste, Reinigung und Schlüssel ohnehin selbst organisierst, zahlst du dort für vieles, das du gar nicht brauchst.</p>
     <div class="bars">
       <div class="bar-row">
         <div class="lab"><span>Stammbleibe-Boost, einmalig</span><b>1.290 €</b></div>
@@ -471,18 +478,18 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <div class="track"><div class="fill" style="width:100%;background:#D8C9B1"></div></div>
       </div>
     </div>
-    <p class="note">Beispielrechnung bei 18.000 € Jahresumsatz. Eine Vollverwaltung übernimmt zusätzlich Reinigung und Gästekommunikation – wir kümmern uns ausschließlich darum, dass gebucht wird.</p>
+    <p class="note">Beispielrechnung bei 18.000 € Jahresumsatz. Eine Vollverwaltung übernimmt dafür auch Reinigung und Gästekommunikation. Wir kümmern uns nur um dein Inserat.</p>
   </div>
 </section>
 
 <section class="about">
   <div class="wrap">
-    <img class="team-img" src="/team.webp" alt="Das Team hinter Stammbleibe" width="720" height="720" loading="lazy" decoding="async">
+    <img class="team-img" src="/team.webp" alt="Thilo und Marvin von Stammbleibe" width="720" height="720" loading="lazy" decoding="async">
     <div>
       <h2>Wer dahintersteckt</h2>
       <div class="body" style="margin-top:22px">
-        <p>Wir fotografieren seit Jahren Immobilien und drehen nebenher Werbefilme. Klingt nach viel, heißt im Grunde nur: Wir wissen, wo das Licht hingehört, und wie ein Raum aussieht, in den man sofort einziehen will.</p>
-        <p>Stammbleibe ist unser Versuch, genau das für Ferienwohnungen bezahlbar zu machen. Ohne Provision, ohne Vertrag über Jahre, mit einem Ergebnis, das du sehen kannst.</p>
+        <p>Wir sind Thilo und Marvin. Seit Jahren fotografieren wir Immobilien, nebenbei drehen wir Werbefilme. Bei beidem geht es am Ende um dieselbe Frage: Wie muss ein Raum aussehen, damit man sofort rein will?</p>
+        <p>Mit Stammbleibe machen wir das jetzt für Ferienwohnungen, zu einem Preis, der auch mit einer einzigen Wohnung aufgeht. Du zahlst keine Provision und bindest dich an keinen Vertrag.</p>
       </div>
     </div>
   </div>
@@ -492,10 +499,10 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
   <div class="wrap">
     <h2>Häufige Fragen</h2>
     <div>
-      <details><summary>Airbnb vermittelt doch selbst Fotografen. Warum ihr?</summary><p>Die liefern Standardfotos. Wir liefern Styling, gesetztes Licht, Video und neue Texte – also das komplette Inserat, nicht nur die Bilder.</p></details>
-      <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja. Wir arbeiten bundesweit. Für den Shooting-Tag reicht eine Schlüsselübergabe, etwa über Nachbarn, Reinigung oder einen Schlüsselsafe.</p></details>
+      <details><summary>Airbnb vermittelt doch selbst Fotografen. Warum ihr?</summary><p>Dort bekommst du Fotos, und das war es meistens. Bei uns ist das Styling dabei, wir bringen eigenes Licht mit, drehen ein Video und schreiben deine Texte neu.</p></details>
+      <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja, wir kommen deutschlandweit. Am Shooting-Tag reicht es, wenn uns jemand den Schlüssel gibt. Das kann die Nachbarin sein, deine Reinigungskraft oder ein Schlüsselsafe.</p></details>
       <details><summary>Muss ich neu einrichten oder Deko kaufen?</summary><p>Nein. Du bekommst vorab eine kurze Liste, was vor Ort sein sollte. Meist reichen ein paar Kissen, Handtücher und Pflanzen für unter 150 €.</p></details>
-      <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann greift die Garantie: Wir überarbeiten dein Inserat kostenlos. Und wenn auch das nicht hilft, bekommst du dein Geld zurück. Details stehen in den <a href="/garantie.html">Garantiebedingungen</a>.</p></details>
+      <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann überarbeiten wir dein Inserat noch einmal, ohne Kosten für dich. Hilft auch das nicht, bekommst du dein Geld zurück. Wie das genau abläuft, steht in den <a href="/garantie.html">Garantiebedingungen</a>.</p></details>
       <details><summary>Wem gehören die Fotos und Videos?</summary><p>Du darfst sie zeitlich unbegrenzt für die Vermarktung deiner Wohnung nutzen, auf allen Plattformen, deiner Website und in Social Media.</p></details>
       <details><summary>Gibt es eine Vertragslaufzeit?</summary><p>Nein. Du zahlst einmal für ein fertiges Ergebnis. Laufende Betreuung gibt es nur, wenn du sie ausdrücklich willst.</p></details>
     </div>
@@ -504,8 +511,8 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 
 <section class="final">
   <div class="wrap">
-    <h2>Finde heraus, was in deinem Inserat steckt.</h2>
-    <p class="lede">Schick uns den Link. Du bekommst eine ehrliche Einschätzung, auch wenn die Antwort lautet: Passt schon.</p>
+    <h2>Schick uns dein Inserat.</h2>
+    <p class="lede">Wir schauen es uns an und sagen dir innerhalb von 48 Stunden, was wir ändern würden. Manchmal lautet die Antwort auch: passt schon.</p>
     <button class="btn" type="button" data-open-funnel>Kostenlosen Check anfragen</button>
   </div>
 </section>
@@ -544,12 +551,12 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 
   // ---------- quiz ----------
   var Q = [
-    {q:'Wer hat deine aktuellen Fotos gemacht?', o:['Ich selbst, mit dem Handy','Bekannte oder der Makler','Ein Profi'], tip:'Professionelle Fotos sind der größte Einzelhebel. Das Titelbild entscheidet, ob überhaupt geklickt wird.'},
-    {q:'Wie alt sind die Fotos?', o:['Älter als 3 Jahre','1–3 Jahre','Jünger als 1 Jahr'], tip:'Alte Fotos zeigen oft nicht mehr, was heute vor Ort ist – und wirken im Vergleich zu neuen Inseraten müde.'},
-    {q:'Gibt es ein Video im Inserat?', o:['Nein','Ein Handyvideo','Ein professionelles Video'], tip:'Ein kurzes Video hebt dich von fast allen Inseraten in deiner Gegend ab und funktioniert zusätzlich auf Instagram.'},
-    {q:'Wann hast du Titel und Beschreibung zuletzt überarbeitet?', o:['Seit dem Start nicht','Vor über einem Jahr','In den letzten Monaten'], tip:'Titel und Beschreibung nach Suchlogik der Plattform bringen dich in mehr Suchergebnisse.'},
-    {q:'Wie legst du deine Preise fest?', o:['Feste Preise','Per Hand nach Saison','Mit einem Pricing-Tool'], tip:'Dynamische Preise holen in der Hauptsaison mehr raus und füllen Lücken in der Nebensaison.'},
-    {q:'Wie ist die Belegung in der Nebensaison?', o:['Unter 30 %','30–60 %','Über 60 %'], tip:'Schwache Nebensaison ist fast immer ein Sichtbarkeitsproblem – genau da wirken bessere Bilder am stärksten.'},
+    {q:'Wer hat deine aktuellen Fotos gemacht?', o:['Ich selbst, mit dem Handy','Bekannte oder der Makler','Ein Profi'], tip:'Bei den Fotos lässt sich am meisten holen. Vom Titelbild hängt ab, ob jemand dein Inserat überhaupt öffnet.'},
+    {q:'Wie alt sind die Fotos?', o:['Älter als 3 Jahre','1–3 Jahre','Jünger als 1 Jahr'], tip:'Auf alten Fotos fehlt oft, was du inzwischen neu gemacht hast. Neben frischen Inseraten wirken sie außerdem schnell angestaubt.'},
+    {q:'Gibt es ein Video im Inserat?', o:['Nein','Ein Handyvideo','Ein professionelles Video'], tip:'Mit einem kurzen Video fällst du auf, ob im Inserat, auf deiner eigenen Seite oder auf Instagram.'},
+    {q:'Wann hast du Titel und Beschreibung zuletzt überarbeitet?', o:['Seit dem Start nicht','Vor über einem Jahr','In den letzten Monaten'], tip:'Ein Titel mit den Wörtern, nach denen Gäste suchen (Sauna, Hund erlaubt, Seeblick), bringt dich in mehr Suchergebnisse.'},
+    {q:'Wie legst du deine Preise fest?', o:['Feste Preise','Per Hand nach Saison','Mit einem Pricing-Tool'], tip:'Wenn sich deine Preise nach der Nachfrage richten, verdienst du in der Hauptsaison mehr und füllst in der Nebensaison Lücken.'},
+    {q:'Wie ist die Belegung in der Nebensaison?', o:['Unter 30 %','30–60 %','Über 60 %'], tip:'Läuft die Nebensaison schwach, sehen dich oft einfach zu wenige Gäste. Gerade dann machen bessere Bilder den größten Unterschied.'},
     {q:'Auf wie vielen Plattformen bist du?', o:['Nur einer','Zwei','Drei oder mehr'], tip:'Eine zweite Plattform wie Booking.com erreicht Gäste, die Airbnb gar nicht nutzen.'}
   ];
   var list = document.getElementById('qlist');
@@ -586,16 +593,16 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
     var score = Math.round(sum / (Q.length * 2) * 100);
     lastScore = score;
     var title, text;
-    if (score < 40){ title = 'Hier steckt richtig viel drin.'; text = 'Dein Inserat verschenkt gerade Buchungen. Die gute Nachricht: Die Hebel sind klar und schnell umgesetzt.'; }
-    else if (score < 70){ title = 'Solide Basis, klare Hebel.'; text = 'Du machst schon einiges richtig. Mit ein paar gezielten Änderungen holst du deutlich mehr raus.'; }
-    else { title = 'Schon gut aufgestellt.'; text = 'Dein Inserat ist besser als die meisten. Ob sich ein Boost trotzdem lohnt, sagen wir dir ehrlich im kostenlosen Check.'; }
+    if (score < 40){ title = 'Da geht noch einiges.'; text = 'Dir entgehen gerade Buchungen. Was zu tun ist, lässt sich aber ziemlich klar sagen, und das meiste ist in ein paar Wochen erledigt.'; }
+    else if (score < 70){ title = 'Die Basis stimmt.'; text = 'Einiges machst du schon richtig. Bei diesen Punkten würden wir zuerst ansetzen:'; }
+    else { title = 'Dein Inserat ist schon gut.'; text = 'Ob sich trotzdem noch etwas rausholen lässt, schauen wir uns im kostenlosen Check an. Wenn nicht, sagen wir dir das auch.'; }
     document.getElementById('rtitle').textContent = title;
     document.getElementById('rtext').textContent = text;
     var tips = document.getElementById('rtips'); tips.textContent = '';
     a.map(function(v, i){ return {v:v, i:i}; }).sort(function(x, y){ return x.v - y.v || x.i - y.i; })
      .filter(function(x){ return x.v < 2; }).slice(0, 3)
      .forEach(function(x){ var li = document.createElement('li'); li.textContent = Q[x.i].tip; tips.appendChild(li); });
-    if (!tips.children.length){ var li = document.createElement('li'); li.textContent = 'Keine offensichtliche Schwachstelle – der Feinschliff liegt im Detail.'; tips.appendChild(li); }
+    if (!tips.children.length){ var li = document.createElement('li'); li.textContent = 'Eine offensichtliche Schwachstelle sehen wir nicht. Was noch geht, steckt im Detail.'; tips.appendChild(li); }
     var res = document.getElementById('result'); res.classList.add('show');
     var arc = document.getElementById('garc'); var num = document.getElementById('gnum');
     requestAnimationFrame(function(){ arc.style.strokeDashoffset = (326.7 * (1 - score / 100)).toFixed(1); });
@@ -612,51 +619,99 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
   var data = {};
   var steps = [
     {k:'einheiten', t:'Wie viele Ferienwohnungen vermietest du?', o:['Eine','Zwei','Drei oder mehr']},
-    {k:'lage', t:'Wo liegt deine Wohnung?', o:['An der Küste','In den Bergen','Auf dem Land oder im Mittelgebirge','In einer Stadt']},
-    {k:'lage_buchungen', t:'Wie läuft es gerade mit den Buchungen?', o:['Gut, aber die Nebensaison ist schwach','Insgesamt zu wenig','Noch gar nicht, die Wohnung ist neu']},
+    {k:'ziele', t:'Was soll besser laufen?', hint:'Du kannst mehrere Punkte wählen.', multi:true, o:[
+      'Mehr Buchungen insgesamt',
+      'Die Nebensaison füllen',
+      'Höhere Preise pro Nacht',
+      'Andere Gäste ansprechen',
+      'Längere Aufenthalte, weniger Wechsel',
+      'Mehr Direktbuchungen ohne Plattformgebühr',
+      'Die Wohnung ist neu und soll gut starten'
+    ]},
+    {k:'zielgruppe', t:'Welche Gäste hättest du gern öfter?', hint:'Danach richten wir Styling, Bildauswahl und Texte aus.', multi:true,
+      when:function(){ return (data.ziele || []).indexOf('Andere Gäste ansprechen') > -1; },
+      o:['Paare','Familien mit Kindern','Gäste mit Hund','Leute, die remote arbeiten','Geschäftsreisende und Monteure','Gruppen und Freundeskreise']},
     {k:'start', t:'Wann möchtest du loslegen?', o:['So schnell wie möglich','In den nächsten 1–3 Monaten','Ich informiere mich erst mal']},
-    {k:'link', t:'Wo finden wir dein Inserat?', hint:'Ein Link zu Airbnb oder Booking.com reicht. Noch nicht online? Dann einfach weiter.', input:true},
+    {k:'wo', t:'Wo steht deine Wohnung?', hint:'Mit dem Link können wir uns dein Inserat schon vor dem Gespräch ansehen.', location:true},
     {k:'kontakt', t:'Wohin dürfen wir deinen Check schicken?', contact:true}
   ];
   var idx = 0;
+  function live(){ return steps.filter(function(s){ return !s.when || s.when(); }); }
   function el(tag, attrs, text){ var e = document.createElement(tag); if (attrs) Object.keys(attrs).forEach(function(k){ e.setAttribute(k, attrs[k]); }); if (text != null) e.textContent = text; return e; }
   function nav(canNext, nextLabel, onNext){
     var n = el('div', {class:'fn-nav'});
     if (idx > 0){ var b = el('button', {class:'fn-back', type:'button'}, 'Zurück'); b.addEventListener('click', function(){ idx--; render(); }); n.appendChild(b); } else { n.appendChild(el('span')); }
-    if (canNext){ var f = el('button', {class:'btn', type:'button'}, nextLabel); f.addEventListener('click', onNext); n.appendChild(f); }
+    var f = null;
+    if (canNext){ f = el('button', {class:'btn', type:'button'}, nextLabel); f.addEventListener('click', onNext); n.appendChild(f); }
+    n.next = f;
     return n;
+  }
+  function field(wrap, id, label, type, ac, errText){
+    var f = el('div', {class:'field'});
+    f.appendChild(el('label', {for:id}, label + (errText ? '' : ' (optional)')));
+    var i = el('input', {id:id, type:type, autocomplete:ac}); i.value = data[id] || '';
+    f.appendChild(i);
+    if (errText) f.appendChild(el('span', {class:'err'}, errText));
+    wrap.appendChild(f); return {f:f, i:i};
   }
   function render(){
     body.textContent = '';
-    prog.style.width = Math.round(idx / steps.length * 100) + '%';
-    if (idx >= steps.length) return done();
-    var s = steps[idx];
+    var L = live();
+    prog.style.width = Math.round(idx / L.length * 100) + '%';
+    if (idx >= L.length) return done();
+    var s = L[idx];
     var wrap = el('div', {class:'fn'}); wrap.style.padding = '0';
     var h = el('h3', null, s.t); h.id = 'fstep-title'; h.tabIndex = -1; wrap.appendChild(h);
     if (s.hint) wrap.appendChild(el('p', {class:'hint'}, s.hint));
-    if (s.o){
-      var c = el('div', {class:'choices'});
-      s.o.forEach(function(opt){ var b = el('button', {class:'choice', type:'button'}, opt); b.addEventListener('click', function(){ data[s.k] = opt; idx++; render(); }); c.appendChild(b); });
-      wrap.appendChild(c); wrap.appendChild(nav(false));
-    } else if (s.input){
-      var f = el('div', {class:'field'});
-      var lab = el('label', {for:'f-link'}, 'Link zum Inserat (optional)');
-      var inp = el('input', {id:'f-link', type:'url', inputmode:'url', placeholder:'https://www.airbnb.de/rooms/…', autocomplete:'url'});
-      inp.value = data.link || '';
-      f.appendChild(lab); f.appendChild(inp); wrap.appendChild(f);
-      wrap.appendChild(nav(true, 'Weiter', function(){ data.link = inp.value.trim(); idx++; render(); }));
+    if (s.o && s.multi){
+      var sel = (data[s.k] || []).slice();
+      var c = el('div', {class:'choices multi'});
+      var nv;
+      s.o.forEach(function(opt){
+        var b = el('button', {class:'choice', type:'button', 'aria-pressed': sel.indexOf(opt) > -1 ? 'true' : 'false'}, opt);
+        b.addEventListener('click', function(){
+          var i = sel.indexOf(opt);
+          if (i > -1) sel.splice(i, 1); else sel.push(opt);
+          b.setAttribute('aria-pressed', i > -1 ? 'false' : 'true');
+          nv.next.disabled = !sel.length;
+        });
+        c.appendChild(b);
+      });
+      wrap.appendChild(c);
+      nv = nav(true, 'Weiter', function(){ data[s.k] = s.o.filter(function(o){ return sel.indexOf(o) > -1; }); idx++; render(); });
+      nv.next.disabled = !sel.length;
+      wrap.appendChild(nv);
+    } else if (s.o){
+      var c1 = el('div', {class:'choices'});
+      s.o.forEach(function(opt){ var b = el('button', {class:'choice', type:'button'}, opt); b.addEventListener('click', function(){ data[s.k] = opt; idx++; render(); }); c1.appendChild(b); });
+      wrap.appendChild(c1); wrap.appendChild(nav(false));
+    } else if (s.location){
+      var ort = field(wrap, 'ort', 'Ort oder Region', 'text', 'address-level2', 'Bitte gib an, wo die Wohnung liegt.');
+      ort.i.placeholder = 'z. B. Winterberg oder Norderney';
+      var lk = field(wrap, 'link', 'Link zu deinem Inserat', 'url', 'url', 'Bitte füg den Link zu deinem Inserat ein.');
+      lk.i.placeholder = 'https://www.airbnb.de/rooms/…'; lk.i.setAttribute('inputmode', 'url');
+      var off = el('label', {class:'consent'});
+      var ob = el('input', {type:'checkbox', id:'f-offline'}); ob.checked = !!data.offline;
+      off.appendChild(ob); off.appendChild(el('span', null, 'Mein Inserat ist noch nicht online'));
+      wrap.appendChild(off);
+      function syncOff(){ lk.i.disabled = ob.checked; lk.f.style.opacity = ob.checked ? '.45' : ''; if (ob.checked) lk.f.classList.remove('invalid'); }
+      ob.addEventListener('change', syncOff); syncOff();
+      wrap.appendChild(nav(true, 'Weiter', function(){
+        var o = ort.i.value.trim(), l = lk.i.value.trim(), ok = true;
+        ort.f.classList.toggle('invalid', !o); if (!o) ok = false;
+        if (!ob.checked){
+          if (l && !/^https?:\/\//i.test(l)) l = 'https://' + l;
+          var linkOk = /^https?:\/\/[^\s.]+\.[^\s]{2,}/i.test(l);
+          lk.f.classList.toggle('invalid', !linkOk); if (!linkOk) ok = false;
+        }
+        if (!ok) return;
+        data.ort = o; data.offline = ob.checked; data.link = ob.checked ? 'noch nicht online' : l;
+        idx++; render();
+      }));
     } else if (s.contact){
-      function field(id, label, type, ac, req){
-        var f = el('div', {class:'field'});
-        f.appendChild(el('label', {for:id}, label + (req ? '' : ' (optional)')));
-        var i = el('input', {id:id, type:type, autocomplete:ac}); i.value = data[id] || '';
-        f.appendChild(i);
-        if (req) f.appendChild(el('span', {class:'err'}, type === 'email' ? 'Bitte gib eine gültige E-Mail-Adresse ein.' : 'Bitte gib deinen Vornamen ein.'));
-        wrap.appendChild(f); return {f:f, i:i};
-      }
-      var nm = field('name', 'Vorname', 'text', 'given-name', true);
-      var em = field('email', 'E-Mail', 'email', 'email', true);
-      var ph = field('phone', 'Telefon, falls ein kurzer Anruf einfacher ist', 'tel', 'tel', false);
+      var nm = field(wrap, 'name', 'Vorname', 'text', 'given-name', 'Bitte gib deinen Vornamen ein.');
+      var em = field(wrap, 'email', 'E-Mail', 'email', 'email', 'Bitte gib eine gültige E-Mail-Adresse ein.');
+      var ph = field(wrap, 'phone', 'Telefon, falls ein kurzer Anruf einfacher ist', 'tel', 'tel', null);
       var cons = el('label', {class:'consent'});
       var cb = el('input', {type:'checkbox', id:'f-consent'});
       var consTxt = el('span'); consTxt.appendChild(document.createTextNode('Ich bin einverstanden, dass Stammbleibe mich zu meiner Anfrage kontaktiert. Details in der ')); consTxt.appendChild(el('a', {href:'https://www.iubenda.com/privacy-policy/67312620', target:'_blank', rel:'noopener'}, 'Datenschutzerklärung')); consTxt.appendChild(document.createTextNode('.'));
@@ -685,10 +740,11 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
     h.focus();
   }
   function send(){
+    var zg = (data.ziele || []).indexOf('Andere Gäste ansprechen') > -1 ? (data.zielgruppe || []).join(', ') : '';
     var body = new URLSearchParams({
       'form-name': 'inserats-check', 'bot-field': '',
-      einheiten: data.einheiten || '', lage: data.lage || '', buchungslage: data.lage_buchungen || '',
-      start: data.start || '', inserat_link: data.link || '', vorname: data.name || '',
+      einheiten: data.einheiten || '', ziele: (data.ziele || []).join(', '), zielgruppe: zg,
+      start: data.start || '', ort: data.ort || '', inserat_link: data.link || '', vorname: data.name || '',
       email: data.email || '', telefon: data.phone || '',
       score: data.score != null ? String(data.score) : '', einwilligung: 'ja'
     });
@@ -699,10 +755,10 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
     prog.style.width = '100%';
     var w = el('div', {class:'fn fn-done'}); w.style.padding = '0';
     w.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M34 104 V54 A26 26 0 0 1 86 54 V104 M24 104 H96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="70" r="19" fill="#E58A4E" opacity=".3"/><circle cx="60" cy="70" r="10" style="fill:var(--accent)"/></svg>');
-    var h = el('h3', null, 'Danke, ' + (data.name || '') + '!'); h.tabIndex = -1; w.appendChild(h);
-    w.appendChild(el('p', {class:'hint'}, 'Wir schauen uns dein Inserat an und melden uns innerhalb von 48 Stunden mit deinem persönlichen Check.'));
+    var h = el('h3', null, 'Danke, ' + (data.name || '') + '.'); h.tabIndex = -1; w.appendChild(h);
+    w.appendChild(el('p', {class:'hint'}, data.offline ? 'Wir melden uns innerhalb von 48 Stunden bei dir und besprechen, wie dein Inserat von Anfang an gut läuft.' : 'Wir schauen uns dein Inserat an und melden uns innerhalb von 48 Stunden mit unserer Einschätzung.'));
     if (CALENDAR_URL){
-      var a = el('a', {class:'btn', href:CALENDAR_URL, target:'_blank', rel:'noopener'}, 'Direkt einen Termin buchen'); w.appendChild(a);
+      var a = el('a', {class:'btn', href:CALENDAR_URL, target:'_blank', rel:'noopener'}, 'Lieber gleich telefonieren? Termin wählen'); w.appendChild(a);
     }
     body.appendChild(w); h.focus();
   }
