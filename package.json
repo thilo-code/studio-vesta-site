@@ -1,0 +1,8 @@
+{
+  "name": "stammbleibe-site",
+  "private": true,
+  "description": "Statische Seite + Netlify Function für die Bestätigungsmail",
+  "dependencies": {
+    "nodemailer": "10.0.10"
+  }
+}
