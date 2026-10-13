@@ -58,21 +58,46 @@ export function buildMail(data, siteUrl) {
     `Impressum: ${site}/impressum.html`,
   ].join('\n');
 
-  const p = 'margin:0 0 16px';
-  const html = `<!doctype html><html lang="de"><body style="margin:0;padding:24px;background:#ffffff;color:#22201D;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.55">
-<div style="max-width:560px">
-<p style="${p}">${name ? 'Hallo ' + esc(name) + ',' : 'Hallo,'}</p>
-<p style="${p}">danke für deine Anfrage, sie ist bei uns angekommen.</p>
-<p style="${p}">${esc(intro)}</p>
-<p style="margin:0 0 6px">Das hast du uns geschickt:</p>
-<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 16px;border-collapse:collapse">
-${rows.map(([k, v]) => `<tr><td style="padding:3px 16px 3px 0;color:#5E574E;vertical-align:top;white-space:nowrap">${esc(k)}</td><td style="padding:3px 0;vertical-align:top;word-break:break-word">${esc(v)}</td></tr>`).join('\n')}
-</table>
-<p style="${p}">Wenn du lieber direkt mit uns sprichst, <a href="${CAL_URL}" style="color:#B34D27">such dir hier einen Termin aus</a>.</p>
-<p style="${p}">Und falls dir noch etwas einfällt, antworte einfach auf diese Mail.</p>
-<p style="margin:0 0 32px">Viele Grüße<br>Thilo</p>
-<p style="margin:0;padding-top:16px;border-top:1px solid #D8C9B1;font-size:12px;line-height:1.5;color:#5E574E">${footer.map(esc).join('<br>')}<br><a href="${esc(site)}/impressum.html" style="color:#5E574E">Impressum</a></p>
-</div></body></html>`;
+  // Farben aus der Website
+  const C = { bg: '#EFE6D8', card: '#F7F2EA', ink: '#22201D', muted: '#6B6358', line: '#D8C9B1', accent: '#B34D27', deep: '#3D4A3E' };
+  const sans = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+  const serif = "'Cormorant Garamond',Georgia,'Times New Roman',serif";
+  // Nullbreite Leerzeichen verhindern, dass Gmail die Adresse automatisch blau verlinkt
+  const noLink = (s) => esc(s).replace(/(\d)(?=\d)/g, '$1&#8203;').replace(/stra/g, 'stra&#8203;');
+  const p = `margin:0 0 16px;font-family:${sans};font-size:16px;line-height:1.6;color:${C.ink}`;
+  const valueCell = (k, v) => k === 'Inserat' && /^https?:\/\//.test(v)
+    ? `<a href="${esc(v)}" style="color:${C.accent};text-decoration:underline;word-break:break-all">${esc(v.replace(/^https?:\/\/(www\.)?/, ''))}</a>`
+    : esc(v);
+
+  const html = `<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${esc('Deine Anfrage bei Stammbleibe')}</title></head>
+<body style="margin:0;padding:0;background:${C.bg}">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">${esc(intro)}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.bg}" style="background:${C.bg}">
+<tr><td align="center" style="padding:32px 14px">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px">
+    <tr><td bgcolor="${C.deep}" style="background:${C.deep};border-radius:14px 14px 0 0;padding:26px 32px">
+      <img src="${esc(site)}/mail/logo.png" width="190" height="40" alt="Stammbleibe" style="display:block;border:0;width:190px;height:auto;color:${C.bg};font-family:${serif};font-size:22px;letter-spacing:2px">
+    </td></tr>
+    <tr><td bgcolor="${C.card}" style="background:${C.card};border:1px solid ${C.line};border-top:0;border-radius:0 0 14px 14px;padding:34px 32px 30px">
+      <h1 style="margin:0 0 18px;font-family:${serif};font-weight:500;font-size:32px;line-height:1.15;color:${C.ink}">${name ? 'Danke, ' + esc(name) + '.' : 'Danke für deine Anfrage.'}</h1>
+      <p style="${p}">Deine Anfrage ist bei uns angekommen. ${esc(intro)}</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 26px;border-top:1px solid ${C.line}">
+${rows.map(([k, v]) => `        <tr><td style="padding:11px 16px 11px 0;border-bottom:1px solid ${C.line};font-family:${sans};font-size:14px;line-height:1.4;color:${C.muted};vertical-align:top;width:38%">${esc(k)}</td><td style="padding:11px 0;border-bottom:1px solid ${C.line};font-family:${sans};font-size:15px;line-height:1.4;color:${C.ink};vertical-align:top">${valueCell(k, v)}</td></tr>`).join('\n')}
+      </table>
+      <p style="${p}">Lieber gleich sprechen? Such dir einen Termin für ein kurzes Gespräch aus.</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 26px"><tr><td bgcolor="${C.accent}" style="background:${C.accent};border-radius:999px">
+        <a href="${CAL_URL}" style="display:inline-block;padding:14px 28px;font-family:${sans};font-size:15px;font-weight:600;line-height:1;color:#FFFFFF;text-decoration:none;border-radius:999px">Termin aussuchen</a>
+      </td></tr></table>
+      <p style="${p}">Und falls dir noch etwas einfällt, antworte einfach auf diese Mail.</p>
+      <p style="margin:24px 0 0;font-family:${sans};font-size:16px;line-height:1.5;color:${C.ink}">Viele Grüße<br><span style="font-family:${serif};font-size:24px;line-height:1.4">Thilo</span><br><span style="font-size:13px;color:${C.muted}">Thilo Erward · Stammbleibe</span></p>
+    </td></tr>
+    <tr><td style="padding:22px 6px 0;font-family:${sans};font-size:12px;line-height:1.6;color:${C.muted}">
+      ${footer.map(noLink).join('<br>')}<br><a href="${esc(site)}/impressum.html" style="color:${C.muted};text-decoration:underline">Impressum</a>
+    </td></tr>
+  </table>
+</td></tr></table>
+</body></html>`;
 
   return { subject: 'Deine Anfrage bei Stammbleibe', text, html };
 }
