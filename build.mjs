@@ -8,6 +8,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import sharp from 'sharp';
 import { LOGO_PNG_BASE64 } from './netlify/shared/mail-logo.mjs';
+import { TEAM_WEBP_BASE64 } from './netlify/shared/team-photo.mjs';
 
 const require = createRequire(import.meta.url);
 const OUT = 'dist';
@@ -27,6 +28,10 @@ for (const f of await readdir('.')) {
     await copyFile(f, path.join(OUT, f));
   }
 }
+
+// Teamfoto liegt als Base64 im Repo (netlify/shared/team-photo.mjs)
+const teamPhoto = Buffer.from(TEAM_WEBP_BASE64, 'base64');
+await writeFile(path.join(OUT, 'team.webp'), teamPhoto);
 
 // 2. Schriften
 const pkgDir = (p) => path.dirname(require.resolve(`${p}/package.json`));
@@ -48,7 +53,7 @@ for (const pkg of new Set(FONTS.map(([p]) => p))) {
 
 // 3. Vorschaubild 1200x630: Zypresse-Grün, Logo links, Teamfoto rechts
 const logo = await sharp(Buffer.from(LOGO_PNG_BASE64, 'base64')).resize({ width: 456 }).png().toBuffer();
-const photo = await sharp('team.webp').resize(630, 630, { fit: 'cover' }).toBuffer();
+const photo = await sharp(teamPhoto).resize(630, 630, { fit: 'cover' }).toBuffer();
 await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#3D4A3E' } })
   .composite([
     { input: photo, left: 570, top: 0 },
