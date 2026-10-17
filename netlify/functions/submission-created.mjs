@@ -56,6 +56,7 @@ export function buildMail(data, siteUrl) {
     '-- ',
     ...footer,
     `Impressum: ${site}/impressum.html`,
+    `Datenschutz: ${site}/datenschutz.html`,
   ].join('\n');
 
   // Farben aus der Website
@@ -93,7 +94,7 @@ ${rows.map(([k, v]) => `        <tr><td style="padding:11px 16px 11px 0;border-b
       <p style="margin:24px 0 0;font-family:${sans};font-size:16px;line-height:1.5;color:${C.ink}">Viele Grüße<br><span style="font-family:${serif};font-size:24px;line-height:1.4">Thilo</span><br><span style="font-size:13px;color:${C.muted}">Thilo Erward · Stammbleibe</span></p>
     </td></tr>
     <tr><td style="padding:22px 6px 0;font-family:${sans};font-size:12px;line-height:1.6;color:${C.muted}">
-      ${footer.map(noLink).join('<br>')}<br><a href="${esc(site)}/impressum.html" style="color:${C.muted};text-decoration:underline">Impressum</a>
+      ${footer.map(noLink).join('<br>')}<br><a href="${esc(site)}/impressum.html" style="color:${C.muted};text-decoration:underline">Impressum</a> · <a href="${esc(site)}/datenschutz.html" style="color:${C.muted};text-decoration:underline">Datenschutz</a>
     </td></tr>
   </table>
 </td></tr></table>

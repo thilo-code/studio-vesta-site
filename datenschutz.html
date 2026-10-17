@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Datenschutz – Stammbleibe</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#EFE6D8">
+<style>
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/dm-sans-400.woff2') format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:700;font-display:swap;src:url('/fonts/dm-sans-700.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/cormorant-garamond-500.woff2') format('woff2')}
+@font-face{font-family:'Marcellus';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/marcellus-400.woff2') format('woff2')}
+:root{
+  --bg:#EFE6D8; --ink:#22201D; --muted:#5E574E; --line:#D8C9B1; --accent:#B34D27; --accent-hover:#963F1F;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#1C1A18; --ink:#EFE6D8; --muted:#BDB2A2; --line:#3A352F; --accent:#E58A4E; --accent-hover:#F09B62; }
+}
+:root[data-theme="dark"]{ --bg:#1C1A18; --ink:#EFE6D8; --muted:#BDB2A2; --line:#3A352F; --accent:#E58A4E; --accent-hover:#F09B62; }
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)} a:hover{color:var(--accent-hover)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand svg{width:40px;height:40px}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm small{font:500 .62rem/1 'DM Sans',sans-serif;letter-spacing:.42em;margin-bottom:5px}
+.brand .wm span{font:1.3rem/1 'Marcellus',Georgia,serif;letter-spacing:.1em}
+main{padding:56px 0 80px}
+h1{font:500 clamp(2.4rem,6vw,3.4rem)/1.05 'Cormorant Garamond',Georgia,serif;margin:0 0 12px}
+.lede{color:var(--muted);margin:0 0 40px}
+h2{font:700 .95rem/1.3 'DM Sans',sans-serif;margin:32px 0 6px}
+p{margin:0}
+.block{padding-bottom:4px}
+.small p{color:var(--muted);font-size:.95rem;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:.9rem;color:var(--muted)}
+footer a{color:var(--muted)}
+.prose h2{font:700 1rem/1.3 'DM Sans',sans-serif;margin:32px 0 8px}
+.prose p,.prose li{color:var(--ink);margin:0 0 10px}
+.prose ol,.prose ul{padding-left:1.3em;margin:0 0 10px}
+.prose .muted{color:var(--muted);font-size:.95rem}
+.box{border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-top:16px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Stammbleibe, zur Startseite">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <path d="M34 104 V54 A26 26 0 0 1 86 54 V104 M24 104 H96" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="60" cy="70" r="19" fill="#E58A4E" opacity=".3"/>
+        <circle cx="60" cy="70" r="10" style="fill:var(--accent)"/>
+      </svg>
+      <span class="wm"><span>STAMMBLEIBE</span></span>
+    </a>
+    <a href="/">Zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap prose">
+    <h1>Datenschutzerklärung</h1>
+    <p class="lede">Wie Stammbleibe, ein Angebot der Hillward GmbH, mit deinen Daten umgeht.</p>
+
+    <h2>1. Verantwortlich</h2>
+    <p>Hillward GmbH, Ahnfeldstraße 45, 40239 Düsseldorf<br>vertreten durch die Geschäftsführer Thilo Erward und Marvin Hillebrand<br>E-Mail: <a href="mailto:hello@stammbleibe.de">hello@stammbleibe.de</a>, Telefon: +49 157 34221501<br>Weitere Angaben stehen im <a href="/impressum.html">Impressum</a>.</p>
+
+    <div class="box">
+      <p><strong>Kurz gesagt</strong></p>
+      <ul>
+        <li>Diese Website setzt keine Cookies und nutzt keine Analyse- oder Werbedienste. Schriften und Bilder liegen auf unserem eigenen Server, beim Aufruf werden keine Inhalte von Drittanbietern nachgeladen.</li>
+        <li>Den Inserats-Score berechnet dein Browser. Daten erhalten wir erst, wenn du eine Anfrage abschickst.</li>
+        <li>Für Hosting und Formular nutzen wir Netlify, für E-Mails IONOS.</li>
+      </ul>
+    </div>
+
+    <h2>2. Aufruf der Website und Hosting</h2>
+    <p>Die Website liegt bei Netlify, Inc., San Francisco, USA. Bei jedem Aufruf verarbeitet Netlify technisch notwendige Daten: IP-Adresse, Datum und Uhrzeit, aufgerufene Adresse, übertragene Datenmenge, Statuscode, die zuvor besuchte Seite sowie Angaben zu Browser und Betriebssystem. Das ist nötig, um die Seite auszuliefern und sie vor Angriffen und Missbrauch zu schützen.</p>
+    <p>Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und funktionierenden Website (Art. 6 Abs. 1 lit. f DSGVO). Wir werten diese Protokolle nicht aus und führen sie nicht mit anderen Daten zusammen. Sie werden gelöscht, sobald sie für diese Zwecke nicht mehr gebraucht werden.</p>
+    <p>Netlify verarbeitet die Daten in unserem Auftrag (Art. 28 DSGVO), auch in den USA. Grundlage für diese Übermittlung sind die Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO), die Teil des Auftragsverarbeitungsvertrags mit Netlify sind.</p>
+
+    <h2>3. Kostenloser Inserats-Check (Formular)</h2>
+    <p>Wenn du den Check anfragst, erhalten wir deine Antworten auf die Fragen (Zahl der Unterkünfte, was besser laufen soll, welche Gäste du dir wünschst, wann du starten willst), den Ort der Unterkunft, den Link zu deinem Inserat, deinen Vornamen, deine E-Mail-Adresse, auf Wunsch deine Telefonnummer und, falls du das Quiz gemacht hast, deinen Inserats-Score. Netlify speichert zusätzlich Zeitpunkt, IP-Adresse und Browserangaben der Einsendung.</p>
+    <p>Wir nutzen diese Angaben, um uns dein Inserat anzusehen, dir eine Einschätzung und gegebenenfalls ein Angebot zu schicken und dich dafür per E-Mail oder Telefon zu kontaktieren. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Schritte vor einem Vertrag, die du anfragst). Mit dem Häkchen im Formular willigst du außerdem in die Kontaktaufnahme ein (Art. 6 Abs. 1 lit. a DSGVO). Diese Einwilligung kannst du jederzeit für die Zukunft widerrufen, zum Beispiel per E-Mail an hello@stammbleibe.de.</p>
+    <p>Die Pflichtangaben im Formular brauchen wir, um deine Anfrage zu bearbeiten. Ohne sie können wir dir nicht antworten. Die Telefonnummer ist freiwillig. Der Score ist nur eine Orientierung, wir treffen damit keine automatisierten Entscheidungen im Sinne von Art. 22 DSGVO.</p>
+    <p>Die Einsendungen speichert Netlify für uns (Netlify Forms, Auftragsverarbeitung und Übermittlung in die USA wie in Abschnitt 2). Netlify prüft jede Einsendung automatisch auf Spam und setzt dafür den Dienst Akismet der Automattic Inc., USA, als Unterauftragsverarbeiter ein. Dabei wird der Inhalt der Einsendung an Akismet übermittelt.</p>
+    <p>Nach dem Absenden bekommst du eine Bestätigung per E-Mail. Sie wird über unser Postfach bei der IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, verschickt. IONOS ist für uns als Auftragsverarbeiter tätig.</p>
+    <p>Kommt kein Auftrag zustande, löschen wir deine Anfrage spätestens sechs Monate nach unserem letzten Kontakt. Wird daraus ein Auftrag, gilt Abschnitt 5.</p>
+
+    <h2>4. Kontakt per E-Mail oder Telefon</h2>
+    <p>Wenn du uns schreibst oder anrufst, verarbeiten wir deine Angaben, um dein Anliegen zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn es um einen Auftrag geht, sonst unser berechtigtes Interesse, Anfragen zu beantworten (Art. 6 Abs. 1 lit. f DSGVO). Unser Postfach liegt bei IONOS (siehe Abschnitt 3). Wir löschen die Nachrichten, wenn das Anliegen erledigt ist und keine Aufbewahrungspflicht mehr besteht.</p>
+
+    <h2>5. Aufträge</h2>
+    <p>Wenn du uns beauftragst, verarbeiten wir deine Kontakt- und Rechnungsdaten, die Adresse der Unterkunft, die Zugänge, die du uns für dein Inserat einräumst (zum Beispiel als Co-Gastgeber), und für die Garantie die Statistiken deiner Plattformen, die du uns schickst. Das dient dazu, den Auftrag auszuführen und abzurechnen (Art. 6 Abs. 1 lit. b DSGVO). Zugänge zu deinen Plattform-Konten nutzen wir nur für dein Inserat.</p>
+    <p>Rechnungen und andere Geschäftsunterlagen bewahren wir so lange auf, wie Handels- und Steuerrecht es vorschreiben, je nach Unterlage bis zu zehn Jahre (Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 257 HGB und § 147 AO). Bilder und Videos deiner Unterkunft zeigen wir in unserer Werbung nur, wenn du dem gesondert zugestimmt hast.</p>
+
+    <h2>6. Terminbuchung über Cal.com</h2>
+    <p>Auf der Website und in der Bestätigungsmail verlinken wir auf unseren Buchungskalender bei Cal.com (Cal.com, Inc., USA). Beim Aufruf von stammbleibe.de werden keine Daten an Cal.com übertragen, das passiert erst, wenn du den Link öffnest. Buchst du einen Termin, verarbeitet Cal.com die Angaben, die du dort machst (etwa Name, E-Mail-Adresse und Wunschtermin), und gibt sie an uns weiter, damit wir das Gespräch führen können (Art. 6 Abs. 1 lit. b DSGVO).</p>
+    <p>Cal.com kann die Daten auch in den USA verarbeiten. Grundlage dafür sind die Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Mehr dazu in der <a href="https://cal.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Cal.com</a>.</p>
+
+    <h2>7. Wenn wir Gastgeber von uns aus ansprechen</h2>
+    <p>Wir stellen Stammbleibe auch Gastgebern von Ferienunterkünften vor, die uns noch nicht kennen, in der Regel per Brief. Dafür nutzen wir öffentlich zugängliche Quellen: Impressum und Kontaktseite der Website einer Unterkunft, OpenStreetMap und öffentliche Inserate auf Buchungsplattformen. Wir verarbeiten dabei den Namen der Unterkunft und der Ansprechperson, Anschrift, E-Mail-Adresse, Telefonnummer, Website, Links zu Inseraten und unsere eigene Einschätzung, ob unser Angebot passt (zum Beispiel zur Qualität der Fotos).</p>
+    <p>Rechtsgrundlage ist unser berechtigtes Interesse, unser Angebot passenden Gastgebern vorzustellen (Art. 6 Abs. 1 lit. f DSGVO, Direktwerbung nach Erwägungsgrund 47 DSGVO). Werbe-E-Mails schicken wir nur mit vorheriger Einwilligung.</p>
+    <p>Die Liste führen wir in Google Workspace (Google Cloud EMEA Limited, Dublin, Irland) als Auftragsverarbeiter. Eine Übermittlung an Google in den USA ist dabei möglich. Grundlage dafür ist der Angemessenheitsbeschluss zum EU-US Data Privacy Framework (Art. 45 DSGVO), nach dem Google LLC zertifiziert ist.</p>
+    <p>Du kannst dieser Verarbeitung jederzeit widersprechen, eine kurze Mail an hello@stammbleibe.de genügt. Dann löschen wir deine Daten und vermerken nur noch, dass wir dich nicht mehr ansprechen. Meldest du dich auf unser Schreiben nicht, löschen wir deine Daten spätestens zwölf Monate nach der Kontaktaufnahme.</p>
+
+    <h2>8. Wer deine Daten erhält</h2>
+    <ul>
+      <li>Netlify, Inc. (Hosting und Formular, mit Akismet zur Spam-Prüfung)</li>
+      <li>IONOS SE (E-Mail-Postfach und Versand der Bestätigungsmail)</li>
+      <li>Cal.com, Inc. (nur wenn du einen Termin buchst)</li>
+      <li>Google Cloud EMEA Limited (interne Listen und Dokumente)</li>
+    </ul>
+    <p>Darüber hinaus geben wir Daten nur weiter, wenn wir gesetzlich dazu verpflichtet sind, etwa gegenüber Finanzbehörden, oder wenn es für einen Auftrag nötig ist, etwa an unsere Steuerberatung.</p>
+
+    <h2>9. Keine Cookies</h2>
+    <p>Diese Website speichert keine Informationen auf deinem Gerät und liest keine aus (§ 25 TDDDG). Deshalb gibt es auch kein Cookie-Banner.</p>
+
+    <h2>10. Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft über deine bei uns gespeicherten Daten (Art. 15 DSGVO), auf Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18) und Datenübertragbarkeit (Art. 20). Eine Einwilligung kannst du jederzeit für die Zukunft widerrufen (Art. 7 Abs. 3). Eine Mail an <a href="mailto:hello@stammbleibe.de">hello@stammbleibe.de</a> genügt.</p>
+    <p>Du kannst dich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Für uns zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, Kavalleriestraße 2–4, 40213 Düsseldorf, <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a>.</p>
+    <div class="box">
+      <p><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong></p>
+      <p>Verarbeiten wir Daten auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO), kannst du aus Gründen, die sich aus deiner besonderen Situation ergeben, jederzeit widersprechen. Der Verarbeitung für Direktwerbung kannst du jederzeit ohne Angabe von Gründen widersprechen. Wir verwenden deine Daten dann nicht mehr für diesen Zweck.</p>
+    </div>
+
+    <h2>11. Änderungen</h2>
+    <p>Wir passen diese Erklärung an, wenn sich die Website oder unsere Abläufe ändern. Es gilt die jeweils hier veröffentlichte Fassung.</p>
+
+    <p class="muted">Stand: 17. Oktober 2026</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Stammbleibe · <a href="/">Startseite</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · <a href="/agb.html">AGB</a> · <a href="/widerruf.html">Widerruf</a> · <a href="/garantie.html">Garantie</a></div>
+</footer>
+</body>
+</html>

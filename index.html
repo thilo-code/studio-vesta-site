@@ -204,19 +204,14 @@ section{padding:88px 0}
 .receipt h3{font-size:1.9rem}
 .receipt .sub{color:var(--muted);margin-top:6px}
 .lines{list-style:none;margin:26px 0 0;padding:0}
-.lines li{display:flex;align-items:baseline;gap:10px;padding:9px 0}
+.lines li{display:flex;align-items:flex-start;gap:12px;padding:9px 0}
 .lines li .t{flex:0 1 auto}
-.lines li .dots{flex:1 1 auto;border-bottom:1px dotted var(--muted);transform:translateY(-5px);min-width:20px;opacity:.6}
-.lines li .v{flex:0 0 auto;font-variant-numeric:tabular-nums;color:var(--muted)}
+.lines li .ck{flex:0 0 18px;height:18px;margin-top:4px;border-radius:50%;background:var(--good) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
 .lines .bonus-h{padding-top:18px;font:500 1.2rem/1.2 var(--serif);color:var(--accent)}
-.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
-.total s{font-variant-numeric:tabular-nums}
-.price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:10px}
+.price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
 .price .big{font:500 3.4rem/1 var(--serif);color:var(--ink)}
 .price .was{color:var(--muted);text-align:right;font-size:.95rem}
 .slots{margin-top:18px;font-size:.95rem}
-.slots .bar{height:8px;border-radius:99px;background:var(--line);margin-top:8px;overflow:hidden}
-.slots .bar i{display:block;height:100%;width:100%;background:var(--good)}
 .receipt .btn{width:100%;margin-top:24px}
 .receipt .fine{margin-top:12px;font-size:.88rem;color:var(--muted);text-align:center}
 @media (max-width:860px){.offer .wrap{grid-template-columns:minmax(0,1fr);gap:36px}.receipt{padding:26px 22px}}
@@ -346,7 +341,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
   <div class="wrap">
     <div>
       <h1>Gebucht wird, was gut aussieht.</h1>
-      <p class="lede">Neue Fotos, ein kurzes Video und ein überarbeitetes Inserat zum Festpreis. Provision zahlst du keine, und wenn danach nicht mehr Anfragen kommen, greift unsere Garantie.</p>
+      <p class="lede">Neue Fotos, ein kurzes Video und ein überarbeitetes Inserat zum Festpreis. Provision zahlst du keine, und wenn danach nicht mehr Anfragen kommen, greift unsere <a href="/garantie.html">Garantie</a>.</p>
       <div class="ctas">
         <a class="btn" href="#check">Inserat in 60 Sekunden testen</a>
         <a class="btn btn-quiet" href="#angebot">Zum Angebot</a>
@@ -468,7 +463,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L54 12 V30 C54 44 44 55 32 60 C20 55 10 44 10 30 V12 Z" fill="none" style="stroke:var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M22 32 L29 39 L43 25" fill="none" style="stroke:var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div>
           <h3>Die Mehr-Anfragen-Garantie</h3>
-          <p>Bekommt dein Inserat in den 60 Tagen nach dem Go-live nicht mehr Anfragen als im gleichen Zeitraum davor, überarbeiten wir es kostenlos. Hilft auch das nicht, bekommst du dein Geld zurück. Es gelten die <a href="/garantie.html">Garantiebedingungen</a>, deine gesetzlichen Rechte bleiben unberührt.</p>
+          <p>Bekommt dein Inserat in den 60 Tagen nach dem Go-live nicht mehr Anfragen als im gleichen Zeitraum des Vorjahres, überarbeiten wir es kostenlos. Ist dein Inserat noch kein Jahr online, vergleichen wir mit den 60 Tagen vor dem Go-live. Hilft auch das nicht, bekommst du dein Geld zurück. Es gelten die <a href="/garantie.html">Garantiebedingungen</a>, deine gesetzlichen Rechte bleiben unberührt.</p>
         </div>
       </div>
     </div>
@@ -476,26 +471,24 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       <h3>Das bekommst du</h3>
       <p class="sub">Alles für ein Inserat, einmal bezahlt.</p>
       <ul class="lines">
-        <li><span class="t">Fotoshooting mit Styling und Lichtsetzung, 20–25 Bilder</span><span class="dots"></span><span class="v">690 €</span></li>
-        <li><span class="t">Kurzes Video für dein Inserat plus Instagram-Reel</span><span class="dots"></span><span class="v">490 €</span></li>
-        <li><span class="t">Neue Texte auf Deutsch und Englisch</span><span class="dots"></span><span class="v">290 €</span></li>
-        <li><span class="t">Bilder sortiert und alles im Inserat eingestellt</span><span class="dots"></span><span class="v">190 €</span></li>
-        <li><span class="t">Vorher/Nachher-Report nach 60 Tagen</span><span class="dots"></span><span class="v">150 €</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Fotoshooting mit Styling und Lichtsetzung, 20–25 Bilder</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Kurzes Video für dein Inserat plus Instagram-Reel</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Neue Texte auf Deutsch und Englisch</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Bilder sortiert und alles im Inserat eingestellt</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Vorher/Nachher-Report nach 60 Tagen</span></li>
         <li class="bonus-h">Dazu in der Pilotphase</li>
-        <li><span class="t">Styling-Einkaufsliste für unter 150 €</span><span class="dots"></span><span class="v">90 €</span></li>
-        <li><span class="t">Saison-Update nach 6 Monaten: 3 neue Bilder</span><span class="dots"></span><span class="v">190 €</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Styling-Einkaufsliste für unter 150 €</span></li>
+        <li><span class="ck" aria-hidden="true"></span><span class="t">Saison-Update nach 6 Monaten: 3 neue Bilder</span></li>
       </ul>
-      <div class="total"><span>Einzelwert der Leistungen</span><span>2.090 €</span></div>
       <div class="price">
         <span class="big">990 €</span>
         <span class="was">Pilotpreis inkl. MwSt.<br>danach 1.290 €</span>
       </div>
       <div class="slots">
-        <span>Noch 10 von 10 Pilotplätzen frei. Im Gegenzug dürfen wir dein Vorher/Nachher zeigen.</span>
-        <div class="bar" role="img" aria-label="10 von 10 Plätzen frei"><i></i></div>
+        <span>Nur 10 Pilotplätze. Im Gegenzug dürfen wir dein Vorher/Nachher zeigen.</span>
       </div>
       <button class="btn" type="button" data-open-funnel>Pilotplatz anfragen</button>
-      <p class="fine">Shootings für die Wintersaison laufen bis Mitte November.</p>
+      <p class="fine">Anfahrt im Umkreis von 100 km um Düsseldorf inklusive. Liegt die Wohnung weiter weg, kommen 0,30 € pro Kilometer über 100 km hinaus dazu, für Hin- und Rückweg. Shootings für die Wintersaison laufen bis Mitte November.</p>
     </div>
   </div>
 </section>
@@ -536,7 +529,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       <h2>Wer dahintersteckt</h2>
       <div class="body" style="margin-top:22px">
         <p>Wir sind Thilo und Marvin. Seit Jahren fotografieren wir Immobilien, nebenbei drehen wir Werbefilme. Bei beidem geht es am Ende um dieselbe Frage: Wie muss ein Raum aussehen, damit man sofort rein will?</p>
-        <p>Mit Stammbleibe machen wir das jetzt für Ferienwohnungen, zu einem Preis, der auch mit einer einzigen Wohnung aufgeht. Du zahlst keine Provision und bindest dich an keinen Vertrag.</p>
+        <p>Mit Stammbleibe machen wir das jetzt für Ferienwohnungen, zu einem Preis, der auch mit einer einzigen Wohnung aufgeht. Du zahlst keine Provision und gehst keine Vertragslaufzeit ein.</p>
       </div>
     </div>
   </div>
@@ -547,7 +540,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
     <h2>Häufige Fragen</h2>
     <div>
       <details><summary>Airbnb vermittelt doch selbst Fotografen. Warum ihr?</summary><p>Dort bekommst du Fotos, und das war es meistens. Bei uns ist das Styling dabei, wir bringen eigenes Licht mit, drehen ein Video und schreiben deine Texte neu.</p></details>
-      <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja, wir kommen deutschlandweit. Am Shooting-Tag reicht es, wenn uns jemand den Schlüssel gibt. Das kann die Nachbarin sein, deine Reinigungskraft oder ein Schlüsselsafe.</p></details>
+      <details><summary>Meine Wohnung liegt weit weg von mir. Geht das trotzdem?</summary><p>Ja, wir kommen deutschlandweit. Im Umkreis von 100 km um Düsseldorf ist die Anfahrt im Preis enthalten, darüber hinaus berechnen wir 0,30 € pro Mehrkilometer für Hin- und Rückweg. Am Shooting-Tag reicht es, wenn uns jemand den Schlüssel gibt. Das kann die Nachbarin sein, deine Reinigungskraft oder ein Schlüsselsafe.</p></details>
       <details><summary>Muss ich neu einrichten oder Deko kaufen?</summary><p>Nein. Du bekommst vorab eine kurze Liste, was vor Ort sein sollte. Meist reichen ein paar Kissen, Handtücher und Pflanzen für unter 150 €.</p></details>
       <details><summary>Was passiert, wenn es nichts bringt?</summary><p>Dann überarbeiten wir dein Inserat noch einmal, ohne Kosten für dich. Hilft auch das nicht, bekommst du dein Geld zurück. Wie das genau abläuft, steht in den <a href="/garantie.html">Garantiebedingungen</a>.</p></details>
       <details><summary>Wem gehören die Fotos und Videos?</summary><p>Du darfst sie zeitlich unbegrenzt für die Vermarktung deiner Wohnung nutzen, auf allen Plattformen, deiner Website und in Social Media.</p></details>
@@ -569,7 +562,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
 <footer>
   <div class="wrap">
     <span>© 2026 Stammbleibe</span>
-    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="https://www.iubenda.com/privacy-policy/67312620" target="_blank" rel="noopener">Datenschutz</a>&nbsp;&nbsp;&nbsp;<a href="/agb.html">AGB</a>&nbsp;&nbsp;&nbsp;<a href="/widerruf.html">Widerruf</a>&nbsp;&nbsp;&nbsp;<a href="/garantie.html">Garantie</a></span>
+    <span><a href="/impressum.html">Impressum</a>&nbsp;&nbsp;&nbsp;<a href="/datenschutz.html">Datenschutz</a>&nbsp;&nbsp;&nbsp;<a href="/agb.html">AGB</a>&nbsp;&nbsp;&nbsp;<a href="/widerruf.html">Widerruf</a>&nbsp;&nbsp;&nbsp;<a href="/garantie.html">Garantie</a></span>
   </div>
 </footer>
 
@@ -761,7 +754,7 @@ dialog::backdrop{background:rgba(20,18,16,.6)}
       var ph = field(wrap, 'phone', 'Telefon, falls ein kurzer Anruf einfacher ist', 'tel', 'tel', null);
       var cons = el('label', {class:'consent'});
       var cb = el('input', {type:'checkbox', id:'f-consent'});
-      var consTxt = el('span'); consTxt.appendChild(document.createTextNode('Ich bin einverstanden, dass Stammbleibe mich zu meiner Anfrage kontaktiert. Details in der ')); consTxt.appendChild(el('a', {href:'https://www.iubenda.com/privacy-policy/67312620', target:'_blank', rel:'noopener'}, 'Datenschutzerklärung')); consTxt.appendChild(document.createTextNode('.'));
+      var consTxt = el('span'); consTxt.appendChild(document.createTextNode('Ich bin einverstanden, dass Stammbleibe (Hillward GmbH) mich zu meiner Anfrage per E-Mail oder Telefon kontaktiert. Details in der ')); consTxt.appendChild(el('a', {href:'/datenschutz.html', target:'_blank', rel:'noopener'}, 'Datenschutzerklärung')); consTxt.appendChild(document.createTextNode('.'));
       cons.appendChild(cb); cons.appendChild(consTxt);
       wrap.appendChild(cons);
       var consErr = el('span', {class:'err'}, 'Bitte bestätige, dass wir dich kontaktieren dürfen.'); consErr.style.color = 'var(--accent)'; consErr.style.fontSize = '.88rem'; consErr.hidden = true; wrap.appendChild(consErr);

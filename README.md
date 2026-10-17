@@ -21,4 +21,9 @@ Website von Stammbleibe (stammbleibe.de), gehostet auf Netlify. Auto-Deploy bei 
 ## SEO
 
 - `sitemap.xml` und `robots.txt` im Root, strukturierte Daten und Open-Graph-Tags im `<head>` von `index.html`.
-- Impressum, AGB, Widerruf und Garantie stehen auf `noindex`.
+- Impressum, Datenschutz, AGB, Widerruf und Garantie stehen auf `noindex`.
+
+## Rechtstexte
+
+- Die Datenschutzerklärung ist eine eigene Seite (`datenschutz.html`), nicht mehr iubenda. Neue Dienste (Tracking, Einbettungen, weitere Formulare) dort ergänzen, bevor sie live gehen.
+- Preise, Anfahrt und Garantie stehen auf der Startseite, in `agb.html` und `garantie.html`; bei Änderungen alle Stellen gleich halten.
